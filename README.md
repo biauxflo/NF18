@@ -126,7 +126,7 @@ La classe Stand-up est une classe fille de la classe Spectacle.
 
 Il s’agit de la classe traduisant la représentation d’un spectacle dans une certaine salle, elle constitue donc un intermédiaire entre ces deux classes.
 
-**Attribut : **
+**Attribut :**
 - date de la séance,(obligatoire)
 On note également que les clés étrangères associées à la salle et au spectacle feront office de clés primaires également pour identifier de manière unique la séance.
 
