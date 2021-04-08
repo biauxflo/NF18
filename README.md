@@ -1,6 +1,8 @@
 NOTE DE CLARIFICATION PROJET DE NF18 : Maxime GRORET, Florestan BIAUX, Shilang YE, Augustin de LAUBIER
 ======================================================================================================
 
+
+<h1> Explicitation des objets énoncés dans l'UML </h1>
 <h2>Salle :</h2>
 
 La classe salle respecte toutes les contraintes de l’énoncé. 
