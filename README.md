@@ -163,7 +163,9 @@ Il s’agit de la classe qui va de pair avec Catégorie_billet, et qui permet ic
 
 <h1>Rôle et Libertés de l'Utilisateur</h1>
 Le principe est ici de donner le moindre droit à l'utilisateur, afin d'éviter toute insécurité au sein de la Base de données.
+
 **Etudiant**
+
 Si l'utilisateur est un étudiant, il peut effectuer les actions suivantes :
 - s'inscrire ou/et créer une association, (=> Modification de la Base de donnée au niveau de la classe Association)
 - Affilier une salle de Réunion à son association dans le cas où il possède les droits, (=> Modification de la Base de donnée au niveau de la classe Association et Salle),
@@ -171,11 +173,13 @@ Si l'utilisateur est un étudiant, il peut effectuer les actions suivantes :
 - Acheter un ou plusieurs billet pour un spectacle  (=> Modification de la Base de donnée au niveau de la classe Billet)
 
 **Personnel**
+
 Si l'utilisateur est un membre du personnel technique ou enseignant, il peut effectuer les actions suivantes :
 - participer à un spectacle avec un certain rôle (=> Modification de la Base au niveau de la classe Rôle)
 - Acheter un ou plusieurs billet pour un spectacle  (=> Modification de la Base de donnée au niveau de la classe Billet)
 
 **Personne extérieure à l'UTX**
+
 Si l'utilisateur est extérieure à l'UTX, il peut effectuer les actions suivantes :
 - Acheter un ou plusieurs billet pour un spectacle  (=> Modification de la Base de donnée au niveau de la classe Billet)
  
