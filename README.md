@@ -148,7 +148,7 @@ Il est à noter que chacuns des spectacles auront des catégories avec des tarif
 
 Il s’agit de la classe qui va de pair avec Catégorie_billet, et qui permet ici de rajouter une couche d’identification de l’utilisateur qui ne peut pas être inclus dans la classe Catégorie_billet. Elle est également dépendante du cycle de vie de cette classe car elle nécessite l’appartenance à une catégorie de billet qui indique le tarif par exemple.  L’utilisateur indique sur son billet la catégorie et le spectacle, et obtient le prix grâce à la classe Catégorie. 
 
-**Attribut : **
+**Attribut :**
 - nom de la personne achetant la place,(obligatoire)
 - prénom de la personne achetant la place,(obligatoire)
 - date de création du billet, (obligatoire)
