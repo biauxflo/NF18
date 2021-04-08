@@ -1,6 +1,12 @@
 NOTE DE CLARIFICATION PROJET DE NF18 : Maxime GRORET, Florestan BIAUX, Shilang YE, Augustin de LAUBIER
 ======================================================================================================
-
+<h1>Modélisation de la Base de Données</h1>
+Le principe de cette BDD est de modéliser un système associatif tel que l'on peut le voir à l'UTC, qui contient:
+- la liste des étudiants, du personnel (enseignant et technique) ainsi que des personnes extérieures participant aux évènements,
+- la liste des associations, les étudiants les composant,
+- la liste des salles servant de salle de réunions aux associations ou encore de salle de spectacle pour les évènements organisées par les associations,
+- La liste des spectacles organisées par les associations, ainsi que la liste des séances affiliées à ceux-ci.
+- La liste des billets achetés par les personnes pour les séances des spectacles. 
 
 <h1> Explicitation des objets énoncés dans l'UML </h1>
 <h2>Salle :</h2>
@@ -154,3 +160,22 @@ Il s’agit de la classe qui va de pair avec Catégorie_billet, et qui permet ic
 - nom de la personne achetant la place,(obligatoire)
 - prénom de la personne achetant la place,(obligatoire)
 - date de création du billet, (obligatoire)
+
+<h1>Rôle et Libertés de l'Utilisateur</h1>
+Le principe est ici de donner le moindre droit à l'utilisateur, afin d'éviter toute insécurité au sein de la Base de données.
+**Etudiant**
+Si l'utilisateur est un étudiant, il peut effectuer les actions suivantes :
+- s'inscrire ou/et créer une association, (=> Modification de la Base de donnée au niveau de la classe Association)
+- Affilier une salle de Réunion à son association dans le cas où il possède les droits, (=> Modification de la Base de donnée au niveau de la classe Association et Salle),
+- participer à un spectacle avec un certain rôle (=> Modification de la Base au niveau de la classe Rôle)
+- Acheter un ou plusieurs billet pour un spectacle  (=> Modification de la Base de donnée au niveau de la classe Billet)
+
+**Personnel**
+Si l'utilisateur est un membre du personnel technique ou enseignant, il peut effectuer les actions suivantes :
+- participer à un spectacle avec un certain rôle (=> Modification de la Base au niveau de la classe Rôle)
+- Acheter un ou plusieurs billet pour un spectacle  (=> Modification de la Base de donnée au niveau de la classe Billet)
+
+**Personne extérieure à l'UTX**
+Si l'utilisateur est extérieure à l'UTX, il peut effectuer les actions suivantes :
+- Acheter un ou plusieurs billet pour un spectacle  (=> Modification de la Base de donnée au niveau de la classe Billet)
+ 
