@@ -1,7 +1,7 @@
 NOTE DE CLARIFICATION PROJET DE NF18 : Maxime GRORET, Florestan BIAUX, Shilang YE, Augustin de LAUBIER
 ======================================================================================================
 
-Salle :
+<h1>Salle :</h1>
 
 La classe salle respecte toutes les contraintes de l’énoncé. 
 
