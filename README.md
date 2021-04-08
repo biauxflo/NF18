@@ -13,7 +13,7 @@ Attributs :
 
 
 
-Association :
+<h2>Association :</h2>
 	
 La classe association possède les caractéristiques énoncées dans le texte, ce qui nous donne :
 
@@ -28,7 +28,7 @@ Cette relation est associée à la classe salle pour avoir des précisions sur l
 
 
 
-Membre :
+<h2>Membre :</h2>
 
 La classe membre est un classe d’association entre Universitaires et Association qui décrit l’adhésion des étudiants aux associations.
 
@@ -38,7 +38,7 @@ Une contrainte sera à faire pour qu’uniquement les étudiants puissent adhér
 
 
 
-Personne :
+<h2>Personne :</h2>
 
 Il s’agit d’une classe abstraite qui sert à regrouper les différentes catégories de personnes, les universitaires et les personnes extérieures à l’université.
 
@@ -49,7 +49,7 @@ Ces attributs ne font pas offices de clé primaires, étant donné que deux pers
 
 
 
-Universitaire :
+<h2>Universitaire :</h2>
 
 La classe universitaire est une classe fille de la classe personne. Elle permet de simplifier la relation entre les différents acteurs et les spectacles en respectant la consigne de l’énoncé.
 
@@ -60,7 +60,7 @@ L'existence de cette classe permet d'éviter la redondance en créant de multipl
 
 
 
-Personne extérieure :
+<h2>Personne extérieure :</h2>
 
 La classe personne extérieure correspond à toute personne ne faisant pas partie de l’université UTX. Cette classe est une classe fille de la classe Personne elle hérite donc des attributs de celle-ci.
 
@@ -70,7 +70,7 @@ Attributs (non-hérités) :
 
 
 
-Spectacle :
+<h2>Spectacle :</h2>
 
 La classe spectacle est une classe abstraite qui peut être une pièce de théâtre, un concert ou un stand-up. 
 
@@ -80,7 +80,7 @@ Attributs :
 
 
 
-Rôle :
+<h2>Rôle :</h2>
 
 Il s’agit de la classe permettant de traduire l’association entre les “Universitaires” et les Spectacles, qui permet d’indiquer le rôles du participant dans le spectacle.
 
@@ -90,7 +90,7 @@ On identifiera chaque rôle ici par l’ajout de clé étrangère qui feront off
 
 
 
-Concert :
+<h2>Concert :</h2>
 
 La classe concert est une classe fille de la classe Spectacle. Elle hérite donc de ses attributs . On garde ici comme clé le nom du spectacle.
 
@@ -101,7 +101,7 @@ Attributs :
 
 
 
-Pièce de théâtre :
+<h2>Pièce de théâtre :</h2>
 
 La pièce de théâtre est une classe fille de la classe Spectacle. Elle hérite donc de ses attributs. On garde ici comme clé le nom du spectacle.
 
@@ -113,7 +113,7 @@ On peut également songer à avoir la date de parution et l’auteur en clé pri
 
 
 
-Stand-up :
+<h2>Stand-up :</h2>
 
 La classe Stand-up est une classe fille de la classe Spectacle. 
 
@@ -122,7 +122,7 @@ Attribut :
 
 
 
-Séance :
+<h2>Séance :</h2>
 
 Il s’agit de la classe traduisant la représentation d’un spectacle dans une certaine salle, elle constitue donc un intermédiaire entre ces deux classes.
 
@@ -132,7 +132,7 @@ On note également que les clés étrangères associées à la salle et au spect
 
 
 
-Catégorie-Billet :
+<h2>Catégorie-Billet :</h2>
 
 La classe Catégorie_Billet permet la décomposition des billets en plusieurs catégorie. Elle permet ainsi à une personne d’acheter des billets dans des catégories spécifiques en exprimant une contrainte. Ex : un étudiant achète une place de la catégorie “place étudiante”, une personne extérieure devra acheter une place “place extérieur” et ainsi de suite. 
 
@@ -144,7 +144,7 @@ Il est à noter que chacuns des spectacles auront des catégories avec des tarif
 
 
 
-Billet :
+<h2>Billet :</h2>
 
 Il s’agit de la classe qui va de pair avec Catégorie_billet, et qui permet ici de rajouter une couche d’identification de l’utilisateur qui ne peut pas être inclus dans la classe Catégorie_billet. Elle est également dépendante du cycle de vie de cette classe car elle nécessite l’appartenance à une catégorie de billet qui indique le tarif par exemple.  L’utilisateur indique sur son billet la catégorie et le spectacle, et obtient le prix grâce à la classe Catégorie. 
 
