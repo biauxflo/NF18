@@ -42,7 +42,7 @@ Une contrainte sera à faire pour qu’uniquement les étudiants puissent adhér
 
 Il s’agit d’une classe abstraite qui sert à regrouper les différentes catégories de personnes, les universitaires et les personnes extérieures à l’université.
 
-**Attribut : **
+**Attribut :**
 - nom(obligatoire),
 - prénom(obligatoire),
 Ces attributs ne font pas offices de clé primaires, étant donné que deux personnes peuvent avoir le même couple nom/prénom. On va donc chercher les clés primaires dans les attributs non-hérités (CIN et numéro de téléphone).
