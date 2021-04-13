@@ -4,7 +4,22 @@
 
 <h2>MLD</h2>
 
-*A remplir hihi*
+‘‘‘
+Salle(# numero : int, batiment : int, type : String, nbpersonne : int) 
+Association(#nom : string, description : string, mail : string, dateCrea: Date, siteWeb: String, categorie: string)
+Membre
+Universitaire
+Role
+Spectacle
+Concert
+Pièce de théâtre
+Stand-up
+Personne 
+Personne extérieure
+Billet
+Séance
+Catégorie_Billet
+’’’
 
 <h2>Note de clarification</h2>
 
