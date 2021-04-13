@@ -4,19 +4,17 @@
 
 <h2>MLD</h2>
 
-<code>
-salle(#numero : int, batiment : int, type : {'salle de cours', 'bureau', 'amphitheatre'}, nbPersonne : int) 
-association(#nom : string, description : string, mail : string, dateCrea: Date, siteWeb: string, categorie: string)
-membre(#role:{'president', 'tresorier', 'membre'})
-universitaire(#CIN : int, categorie: {'etudiant', 'enseignant', 'administratif', 'technique'}, nom : string, prenom : string)
-personneExterieure(#numeroTelephone : int, organismeAffiliation : string, nom : string, prenom : string)
-role(#role: string)
-concert(#nom : string, duree:int, compositeur: string, anneeParution : date, genre : string)
-pieceTheatre(#nom : string, duree : int, auteur : string, dateParution: date, type: string)
-stand-up(genre : {'spectacle comique', 'debat', 'table ronde'})
-billet(dateCreation : Date, nom : string, prenom : string)
-seance(date : Date)
-categorieBillet(#nom : string, nbrPlace : int, tarif : int)
+<code>salle(#numero : int, batiment : int not NULL, type : {'salle de cours', 'bureau', 'amphitheatre'}, nbPersonne : int not NULL) 
+association(#nom : string, description : string, mail : string, dateCrea: Date not NULL, siteWeb: string, categorie: string, numeroSalle=>salle)
+membre(#role:{'president', 'tresorier', 'membre'}, #nomAssociation=>association, #CIN=>universitaire) *mais categorie == etudiant*
+personne(#nom : string, #prenom : string);
+universitaire( #personne=> personne, CIN : int, categorie: {'etudiant', 'enseignant', 'administratif', 'technique'}) with CIN key
+personneExterieure(#personne=> personne, numeroTelephone : int, organismeAffiliation : string) with numeroTelephone key
+role(#role: string, #CIN=>universitaire, #nomSpectacle=>spectacle)
+spectacle(#nom : string, duree : int not NULL, compositeur : string, anneeParution : date, genre : string, auteur : string, type : string, genre : {'spectacle comique', 'debat', 'table ronde', NULL}, typeSpectacle : {'concert', 'stand-up', 'piece de theatre'}, association=>association)
+billet(dateCreation : Date not NULL , personne=>personne, categorie=>categorieBillet)
+seance(#date : Date, #nomSpectacle=>spectacle, #numeroSalle=>salle)
+categorieBillet(#nom : string, nbrPlace : int not NULL, tarif : int not NULL, #seance=>seance)
 </code>
 
 <h2>Note de clarification</h2>
