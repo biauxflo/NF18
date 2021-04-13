@@ -4,7 +4,7 @@
 
 <h2>MLD</h2>
 
-<code>salle(#numero : int, batiment : int not NULL, type : {'salle de cours', 'bureau', 'amphitheatre'}, nbPersonne : int not NULL) 
+`salle(#numero : int, batiment : int not NULL, type : {'salle de cours', 'bureau', 'amphitheatre'}, nbPersonne : int not NULL) 
 association(#nom : string, description : string, mail : string, dateCrea: Date not NULL, siteWeb: string, categorie: string, numeroSalle=>salle)
 membre(#role:{'president', 'tresorier', 'membre'}, #nomAssociation=>association, #CIN=>universitaire) *mais categorie == etudiant*
 personne(#nom : string, #prenom : string);
@@ -15,7 +15,7 @@ spectacle(#nom : string, duree : int not NULL, compositeur : string, anneeParuti
 billet(dateCreation : Date not NULL , personne=>personne, categorie=>categorieBillet)
 seance(#date : Date, #nomSpectacle=>spectacle, #numeroSalle=>salle)
 categorieBillet(#nom : string, nbrPlace : int not NULL, tarif : int not NULL, #seance=>seance)
-</code>
+`
 
 <h2>Note de clarification</h2>
 
