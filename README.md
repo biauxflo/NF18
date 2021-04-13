@@ -5,20 +5,18 @@
 <h2>MLD</h2>
 
 <code>
-Salle(# numero : int, batiment : int, type : String, nbpersonne : int) 
-Association(#nom : string, description : string, mail : string, dateCrea: Date, siteWeb: String, categorie: string)
-Membre
-Universitaire
-Role
-Spectacle
-Concert
-Pièce de théâtre
-Stand-up
-Personne 
-Personne extérieure
-Billet
-Séance
-Catégorie_Billet
+salle(#numero : int, batiment : int, type : {'salle de cours', 'bureau', 'amphitheatre'}, nbPersonne : int) 
+association(#nom : string, description : string, mail : string, dateCrea: Date, siteWeb: string, categorie: string)
+membre(#role:{'president', 'tresorier', 'membre'})
+universitaire(#CIN : int, categorie: {'etudiant', 'enseignant', 'administratif', 'technique'}, nom : string, prenom : string)
+personneExterieure(#numeroTelephone : int, organismeAffiliation : string, nom : string, prenom : string)
+role(#role: string)
+concert(#nom : string, duree:int, compositeur: string, anneeParution : date, genre : string)
+pieceTheatre(#nom : string, duree : int, auteur : string, dateParution: date, type: string)
+stand-up(genre : {'spectacle comique', 'debat', 'table ronde'})
+billet(dateCreation : Date, nom : string, prenom : string)
+seance(date : Date)
+categorieBillet(#nom : string, nbrPlace : int, tarif : int)
 </code>
 
 <h2>Note de clarification</h2>
