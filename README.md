@@ -84,7 +84,7 @@ Il s’agit d’une classe abstraite qui sert à regrouper les différentes cat�
 **Attribut :**
 - nom(obligatoire),
 - prénom(obligatoire),
-Ces attributs ne font pas offices de clé primaires, étant donné que deux personnes peuvent avoir le même couple nom/prénom. On va donc chercher les clés primaires dans les attributs non-hérités (CIN et numéro de téléphone).
+Ces attributs ne font pas offices de clé primaires, étant donné que deux personnes peuvent avoir le même couple nom/prénom. On a donc une clé artificielle id faisant office de clé primaire. Nous avons fait le choix de la clé artificielle par soucis d'optimisation. En effet, on observe qu'il faut que Billet ait une clé étrangère sur Personne, et les classes filles de personne également. 
 
 
 
