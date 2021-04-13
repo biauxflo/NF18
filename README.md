@@ -11,11 +11,11 @@ association(#nom : string, description : string, mail : string, dateCrea: Date n
 
 membre(#role:{'president', 'tresorier', 'membre'}, #nomAssociation=>association, #CIN=>universitaire) *mais categorie == etudiant*
 
-personne(#id : int, nom : string, prenom : string);
+personne(#nom : string, #prenom : string);
 
-universitaire( #personne=> personne, CIN : int, categorie: {'etudiant', 'enseignant', 'administratif', 'technique'}) with CIN key
+universitaire(#personne=> personne, #CIN : int, categorie: {'etudiant', 'enseignant', 'administratif', 'technique'}) with CIN local key
 
-personneExterieure(#personne=> personne, numeroTelephone : int, organismeAffiliation : string) with numeroTelephone key
+personneExterieure(#personne=> personne, #numeroTelephone : int, organismeAffiliation : string) with numeroTelephone local key
 
 role(#role: string, #CIN=>universitaire, #nomSpectacle=>spectacle)
 
