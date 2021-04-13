@@ -4,7 +4,7 @@
 
 <h2>MLD</h2>
 
-'''
+```
 salle(#numero : int, batiment : int not NULL, type : {'salle de cours', 'bureau', 'amphitheatre'}, nbPersonne : int not NULL)
 
 association(#nom : string, description : string, mail : string, dateCrea: Date not NULL, siteWeb: string, categorie: string, numeroSalle=>salle)
@@ -26,7 +26,7 @@ billet(dateCreation : Date not NULL , personne=>personne, categorie=>categorieBi
 seance(#date : Date, #nomSpectacle=>spectacle, #numeroSalle=>salle)
 
 categorieBillet(#nom : string, nbrPlace : int not NULL, tarif : int not NULL, #seance=>seance)
-'''
+```
 
 <h2>Note de clarification</h2>
 
