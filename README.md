@@ -4,7 +4,7 @@
 
 <h2>MLD</h2>
 
-‘‘‘
+<code>
 Salle(# numero : int, batiment : int, type : String, nbpersonne : int) 
 Association(#nom : string, description : string, mail : string, dateCrea: Date, siteWeb: String, categorie: string)
 Membre
@@ -19,7 +19,7 @@ Personne extérieure
 Billet
 Séance
 Catégorie_Billet
-’’’
+</code>
 
 <h2>Note de clarification</h2>
 
