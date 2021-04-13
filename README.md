@@ -11,7 +11,7 @@ association(#nom : string, description : string, mail : string, dateCrea: Date n
 
 membre(#role:{'president', 'tresorier', 'membre'}, #nomAssociation=>association, #CIN=>universitaire) *mais categorie == etudiant*
 
-personne(#nom : string, #prenom : string);
+personne(#id : int, nom : string, prenom : string);
 
 universitaire( #personne=> personne, CIN : int, categorie: {'etudiant', 'enseignant', 'administratif', 'technique'}) with CIN key
 
