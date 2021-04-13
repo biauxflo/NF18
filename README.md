@@ -4,16 +4,26 @@
 
 <h2>MLD</h2>
 
-`salle(#numero : int, batiment : int not NULL, type : {'salle de cours', 'bureau', 'amphitheatre'}, nbPersonne : int not NULL) 
+`salle(#numero : int, batiment : int not NULL, type : {'salle de cours', 'bureau', 'amphitheatre'}, nbPersonne : int not NULL)
+
 association(#nom : string, description : string, mail : string, dateCrea: Date not NULL, siteWeb: string, categorie: string, numeroSalle=>salle)
+
 membre(#role:{'president', 'tresorier', 'membre'}, #nomAssociation=>association, #CIN=>universitaire) *mais categorie == etudiant*
+
 personne(#nom : string, #prenom : string);
+
 universitaire( #personne=> personne, CIN : int, categorie: {'etudiant', 'enseignant', 'administratif', 'technique'}) with CIN key
+
 personneExterieure(#personne=> personne, numeroTelephone : int, organismeAffiliation : string) with numeroTelephone key
+
 role(#role: string, #CIN=>universitaire, #nomSpectacle=>spectacle)
+
 spectacle(#nom : string, duree : int not NULL, compositeur : string, anneeParution : date, genre : string, auteur : string, type : string, genre : {'spectacle comique', 'debat', 'table ronde', NULL}, typeSpectacle : {'concert', 'stand-up', 'piece de theatre'}, association=>association)
+
 billet(dateCreation : Date not NULL , personne=>personne, categorie=>categorieBillet)
+
 seance(#date : Date, #nomSpectacle=>spectacle, #numeroSalle=>salle)
+
 categorieBillet(#nom : string, nbrPlace : int not NULL, tarif : int not NULL, #seance=>seance)
 `
 
