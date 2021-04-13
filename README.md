@@ -5,7 +5,7 @@
 <h2>MLD</h2>
 
 ```
-salle(#numero : int, batiment : /*string?*/ int not NULL, type : {'salle de cours', 'bureau', 'amphitheatre'}, nbPersonne : int not NULL)
+salle(#numero : int, batiment :string not NULL, type : {'salle de cours', 'bureau', 'amphitheatre'}, nbPersonne : int not NULL)
 
 association(#nom : string, description : string, mail : string, dateCrea: Date not NULL, siteWeb: string, categorie: string, numeroSalle=>salle)
 
