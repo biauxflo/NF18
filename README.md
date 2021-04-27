@@ -11,11 +11,11 @@ association(#nom : string, description : string, mail : string NOT NULL, dateCre
 
 membre(#role:{'president', 'tresorier', 'membre'}, #nomAssociation=>association, #CIN=>universitaire) *mais categorie == etudiant*
 
-personne(#nom : string, #prenom : string);
+personne(#id : int, nom : string, prenom : string);
 
-universitaire(#personne=> personne, #CIN : int, categorie: {'etudiant', 'enseignant', 'administratif', 'technique'}) with CIN local key
+universitaire(#personne=> personne, CIN : int UNIQUE not NULL, categorie: {'etudiant', 'enseignant', 'administratif', 'technique'}) with CIN local key
 
-personneExterieure(#personne=> personne, #numeroTelephone : int, organismeAffiliation : string NOT NULL) with numeroTelephone local key
+personneExterieure(#personne=> personne, numeroTelephone : int UNIQUE not NULL, organismeAffiliation : string NOT NULL) with numeroTelephone local key
 
 role(#role: string, #CIN=>universitaire, #nomSpectacle=>spectacle)
 
@@ -23,7 +23,7 @@ spectacle(#nom : string, duree : int not NULL, compositeur : string , anneeParut
 
 billet(dateCreation : Date NOT NULL , #personne=>personne, #categorie=>categorieBillet, tarif : int not NULL)
 
-seance(#date : Date, #nomSpectacle=>spectacle, #numeroSalle=>salle)
+seance(#id : int, date : Date, nomSpectacle=>spectacle, numeroSalle=>salle)
 
 categorieBillet(#nom : string, nbrPlace : int not NULL, #seance=>seance)
 ```
