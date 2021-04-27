@@ -7,7 +7,7 @@
 ```
 salle(#numero : int, batiment :string not NULL, type : {'salle de cours', 'bureau', 'amphitheatre'}, nbPersonne : int not NULL)
 
-association(#nom : string, description : string, mail : string, dateCrea: Date not NULL, siteWeb: string, categorie: string, numeroSalle=>salle)
+association(#nom : string, description : string, mail : string NOT NULL, dateCrea: Date not NULL, siteWeb: string, categorie: string, numeroSalle=>salle)
 
 membre(#role:{'president', 'tresorier', 'membre'}, #nomAssociation=>association, #CIN=>universitaire) *mais categorie == etudiant*
 
