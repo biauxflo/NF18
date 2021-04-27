@@ -1,12 +1,13 @@
 DROP TABLE salle CASCADE;DROP TABLE association CASCADE;DROP TABLE membre CASCADE;DROP TABLE personne CASCADE;DROP TABLE universitaire CASCADE;DROP TABLE personneExterieure CASCADE;DROP TABLE role CASCADE;DROP TABLE spectacle CASCADE;DROP TABLE billet CASCADE;DROP TABLE seance CASCADE;DROP TABLE categorieBillet CASCADE;
 DROP TYPE type_salle;DROP TYPE cat;DROP TYPE role_asso;DROP TYPE genre_standup;DROP TYPE typeSpectacle;
+
 CREATE TYPE type_salle AS ENUM ('salle de cours', 'bureau', 'amphitheatre');
 CREATE TABLE Salle (
    numero INTEGER,
-   batiment VARCHAR(20) NOT NULL,
+   batiment VARCHAR(20),
    type type_salle,
    nbPersonne INTEGER NOT NULL,
-   PRIMARY KEY (numero)
+   PRIMARY KEY (numero, batiment)
 );
 
 CREATE TABLE association(
@@ -17,7 +18,8 @@ CREATE TABLE association(
     siteWeb VARCHAR(25),
     categorie VARCHAR(25),
     numeroSalle INT,
-    FOREIGN KEY (numeroSalle) REFERENCES salle(numero)
+    batimentSalle VARCHAR(20),
+    FOREIGN KEY (numeroSalle,batimentSalle) REFERENCES salle(numero,batiment)
 );
 
 CREATE TABLE Personne(
@@ -32,6 +34,7 @@ CREATE TABLE universitaire (
     personne INTEGER,
     CIN INTEGER UNIQUE NOT NULL,
     categorie cat,
+    PRIMARY KEY (personne),
     FOREIGN KEY (personne) REFERENCES Personne(id)
 );
 
@@ -85,8 +88,9 @@ CREATE TABLE seance(
     date DATE NOT NULL,
     nomSpectacle VARCHAR(25),
     numeroSalle INTEGER,
+    batimentSalle VARCHAR(20),
     FOREIGN KEY (nomSpectacle) REFERENCES spectacle(nom),
-    FOREIGN KEY (numeroSalle) REFERENCES salle(numero)
+    FOREIGN KEY (numeroSalle,batimentSalle) REFERENCES salle(numero, batiment)
 );
 
 CREATE TABLE CategorieBillet(
