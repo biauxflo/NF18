@@ -21,11 +21,11 @@ role(#role: string, #CIN=>universitaire, #nomSpectacle=>spectacle)
 
 spectacle(#nom : string, duree : int not NULL, compositeur : string , anneeParution : date, genre : string , auteur : string , type : string, genre : {'spectacle comique', 'debat', 'table ronde', NULL}, typeSpectacle : {'concert', 'stand-up', 'piece de theatre'}, association=>association)
 
-billet(dateCreation : Date NOT NULL , #personne=>personne, #categorie=>categorieBillet)
+billet(dateCreation : Date NOT NULL , #personne=>personne, #categorie=>categorieBillet, tarif : int not NULL)
 
 seance(#date : Date, #nomSpectacle=>spectacle, #numeroSalle=>salle)
 
-categorieBillet(#nom : string, nbrPlace : int not NULL, tarif : int not NULL, #seance=>seance)
+categorieBillet(#nom : string, nbrPlace : int not NULL, #seance=>seance)
 ```
 
 <h2>Note de clarification</h2>
