@@ -15,13 +15,13 @@ personne(#nom : string, #prenom : string);
 
 universitaire(#personne=> personne, #CIN : int, categorie: {'etudiant', 'enseignant', 'administratif', 'technique'}) with CIN local key
 
-personneExterieure(#personne=> personne, #numeroTelephone : int, organismeAffiliation : string) with numeroTelephone local key
+personneExterieure(#personne=> personne, #numeroTelephone : int, organismeAffiliation : string NOT NULL) with numeroTelephone local key
 
 role(#role: string, #CIN=>universitaire, #nomSpectacle=>spectacle)
 
-spectacle(#nom : string, duree : int not NULL, compositeur : string, anneeParution : date, genre : string, auteur : string, type : string, genre : {'spectacle comique', 'debat', 'table ronde', NULL}, typeSpectacle : {'concert', 'stand-up', 'piece de theatre'}, association=>association)
+spectacle(#nom : string, duree : int not NULL, compositeur : string NOT NULL, anneeParution : date NOT NULL, genre : string NOT NULL, auteur : string NOT NULL, type : string NOT NULL, genre : {'spectacle comique', 'debat', 'table ronde', NULL}, typeSpectacle : {'concert', 'stand-up', 'piece de theatre'}, association=>association)
 
-billet(dateCreation : Date not NULL , #personne=>personne, #categorie=>categorieBillet)
+billet(dateCreation : Date NOT NULL , #personne=>personne, #categorie=>categorieBillet)
 
 seance(#date : Date, #nomSpectacle=>spectacle, #numeroSalle=>salle)
 
