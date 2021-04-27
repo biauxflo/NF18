@@ -19,7 +19,7 @@ personneExterieure(#personne=> personne, #numeroTelephone : int, organismeAffili
 
 role(#role: string, #CIN=>universitaire, #nomSpectacle=>spectacle)
 
-spectacle(#nom : string, duree : int not NULL, compositeur : string NOT NULL, anneeParution : date NOT NULL, genre : string NOT NULL, auteur : string NOT NULL, type : string NOT NULL, genre : {'spectacle comique', 'debat', 'table ronde', NULL}, typeSpectacle : {'concert', 'stand-up', 'piece de theatre'}, association=>association)
+spectacle(#nom : string, duree : int not NULL, compositeur : string NOT NULL, anneeParution : date NOT NULL, genre : string , auteur : string , type : string, genre : {'spectacle comique', 'debat', 'table ronde', NULL}, typeSpectacle : {'concert', 'stand-up', 'piece de theatre'}, association=>association)
 
 billet(dateCreation : Date NOT NULL , #personne=>personne, #categorie=>categorieBillet)
 
