@@ -1,0 +1,24 @@
+
+INSERT INTO Salle(numero,batiment,type,nbPersonne) VALUES(18,'BF','salle de cours', 30);
+INSERT INTO Salle(numero,batiment,type,nbPersonne) VALUES(20,'PG','amphitheatre',300);
+
+INSERT INTO Personne(nom, prenom) VALUES('Jean','Dupont');
+INSERT INTO Personne(nom,prenom) VALUES('Victor', 'Martin');
+
+INSERT INTO Association (nom, description, mail, dateCrea, siteWeb, categorie, numeroSalle, batimentSalle) VALUES ('DBS City','Meilleurs voleurs d evenement','bigN@dbs.com','1800-11-09','google.com','Vol',18,'BF');
+INSERT INTO Association (nom, description, mail, dateCrea, siteWeb, categorie, numeroSalle, batimentSalle) VALUES ('Festufric','Le fric c est chic','assopaumee@oula.com','1500-10-09','Ohbeh.com','Hola',20,'PG');
+
+INSERT INTO universitaire(personne,CIN,categorie) VALUES(1,987456,'etudiant');
+INSERT INTO PersonneExterieure(personne,numeroTelephone,organismeAffiliation) VALUES(2,0777777777,'CompiCity');
+
+INSERT INTO membre(role,nomAssociation,CIN) VALUES('president','DBS City', 987456);
+
+INSERT INTO Spectacle (nom, duree, type, compositeur, anneeParution, genreConcert,association) VALUES('Vol de spectacle','05:04:00', 'concert','bigN','2021-03-11','Techno', 'DBS City');
+
+INSERT INTO role(role, CIN, nomSpectacle) VALUES('Régisseur',987456,'Vol de spectacle');
+
+INSERT INTO Seance(date,nomSpectacle,numeroSalle,batimentSalle) VALUES('2021-10-05','Vol de spectacle',18,'BF');
+
+INSERT INTO CategorieBillet(nom,nbrPlace) VALUES('Plein pot', 150);
+
+INSERT INTO Billet(dateCreation, personne, tarif, categorie, seance) VALUES('2021-04-20', 1, 20, 'Plein pot', 1);
