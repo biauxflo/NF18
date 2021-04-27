@@ -4,7 +4,29 @@
 
 <h2>MLD</h2>
 
-*A remplir hihi*
+```
+salle(#numero : int, batiment :string not NULL, type : {'salle de cours', 'bureau', 'amphitheatre'}, nbPersonne : int not NULL)
+
+association(#nom : string, description : string, mail : string NOT NULL, dateCrea: Date not NULL, siteWeb: string, categorie: string, numeroSalle=>salle)
+
+membre(#role:{'president', 'tresorier', 'membre'}, #nomAssociation=>association, #CIN=>universitaire) *mais categorie == etudiant*
+
+personne(#nom : string, #prenom : string);
+
+universitaire(#personne=> personne, #CIN : int, categorie: {'etudiant', 'enseignant', 'administratif', 'technique'}) with CIN local key
+
+personneExterieure(#personne=> personne, #numeroTelephone : int, organismeAffiliation : string NOT NULL) with numeroTelephone local key
+
+role(#role: string, #CIN=>universitaire, #nomSpectacle=>spectacle)
+
+spectacle(#nom : string, duree : int not NULL, compositeur : string NOT NULL, anneeParution : date NOT NULL, genre : string , auteur : string , type : string, genre : {'spectacle comique', 'debat', 'table ronde', NULL}, typeSpectacle : {'concert', 'stand-up', 'piece de theatre'}, association=>association)
+
+billet(dateCreation : Date NOT NULL , #personne=>personne, #categorie=>categorieBillet)
+
+seance(#date : Date, #nomSpectacle=>spectacle, #numeroSalle=>salle)
+
+categorieBillet(#nom : string, nbrPlace : int not NULL, tarif : int not NULL, #seance=>seance)
+```
 
 <h2>Note de clarification</h2>
 
@@ -62,7 +84,7 @@ Il s’agit d’une classe abstraite qui sert à regrouper les différentes cat�
 **Attribut :**
 - nom(obligatoire),
 - prénom(obligatoire),
-Ces attributs ne font pas offices de clé primaires, étant donné que deux personnes peuvent avoir le même couple nom/prénom. On va donc chercher les clés primaires dans les attributs non-hérités (CIN et numéro de téléphone).
+Ces attributs ne font pas offices de clé primaires, étant donné que deux personnes peuvent avoir le même couple nom/prénom. On a donc une clé artificielle id faisant office de clé primaire. Nous avons fait le choix de la clé artificielle par soucis d'optimisation. En effet, on observe qu'il faut que Billet ait une clé étrangère sur Personne, et les classes filles de personne également. 
 
 
 
