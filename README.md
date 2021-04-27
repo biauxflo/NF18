@@ -25,7 +25,7 @@ billet(dateCreation : Date NOT NULL , #personne=>personne, #categorie=>categorie
 
 seance(#id : int, date : Date, nomSpectacle=>spectacle, numeroSalle=>salle)
 
-categorieBillet(#nom : string, nbrPlace : int not NULL, #seance=>seance)
+categorieBillet(#nom : string, nbrPlace : int not NULL)
 ```
 
 <h2>Note de clarification</h2>
