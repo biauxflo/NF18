@@ -1,6 +1,12 @@
-DROP TABLE salle CASCADE;DROP TABLE association CASCADE;DROP TABLE membre CASCADE;DROP TABLE personne CASCADE;DROP TABLE universitaire CASCADE;DROP TABLE personneExterieure CASCADE;DROP TABLE role CASCADE;DROP TABLE spectacle CASCADE;DROP TABLE billet CASCADE;DROP TABLE seance CASCADE;DROP TABLE categorieBillet CASCADE;
-DROP TYPE type_salle;DROP TYPE cat;DROP TYPE role_asso;DROP TYPE genre_standup;DROP TYPE typeSpectacle;
+DROP TABLE IF EXISTS salle CASCADE;DROP TABLE IF EXISTS  association CASCADE;DROP TABLE IF EXISTS  membre CASCADE;
+DROP TABLE IF EXISTS  personne CASCADE;DROP TABLE IF EXISTS  universitaire CASCADE;DROP TABLE IF EXISTS  personneExterieure CASCADE;
+DROP TABLE IF EXISTS  role CASCADE;DROP TABLE IF EXISTS  spectacle CASCADE;DROP TABLE IF EXISTS  billet CASCADE;DROP TABLE IF EXISTS  seance CASCADE;
+DROP TABLE IF EXISTS  categorieBillet CASCADE;
+DROP TYPE IF EXISTS type_salle;DROP TYPE IF EXISTS cat;DROP TYPE IF EXISTS role_asso;DROP TYPE  IF EXISTS genre_standup;DROP TYPE IF EXISTS typeSpectacle;
+DROP user if exists utilisateur_projet;
 
+CREATE USER utilisateur_projet with password 'groupe1sujet4';
+GRANT ALL PRIVILEGES ON DATABASE projetGroupe1 to utilisateur_projet;
 CREATE TYPE type_salle AS ENUM ('salle de cours', 'bureau', 'amphitheatre');
 CREATE TABLE Salle (
    numero INTEGER,
@@ -19,7 +25,7 @@ CREATE TABLE association(
     categorie VARCHAR(25),
     numeroSalle INT,
     batimentSalle VARCHAR(20),
-    FOREIGN KEY (numeroSalle,batimentSalle) REFERENCES salle(numero,batiment)
+    FOREIGN KEY (numeroSalle,batimentSalle) REFERENCES salle(numero,batiment) ON DELETE CASCADE
 );
 
 CREATE TABLE Personne(
@@ -35,7 +41,7 @@ CREATE TABLE universitaire (
     CIN INTEGER UNIQUE NOT NULL,
     categorie cat,
     PRIMARY KEY (personne),
-    FOREIGN KEY (personne) REFERENCES Personne(id)
+    FOREIGN KEY (personne) REFERENCES Personne(id) ON DELETE CASCADE
 );
 
 CREATE TABLE PersonneExterieure (
@@ -43,7 +49,7 @@ CREATE TABLE PersonneExterieure (
     numeroTelephone INTEGER UNIQUE NOT NULL,
     organismeAffiliation VARCHAR(30),
     PRIMARY KEY (personne),
-    FOREIGN KEY (personne) REFERENCES Personne(id)
+    FOREIGN KEY (personne) REFERENCES Personne(id) ON DELETE CASCADE
 );
 
 
@@ -53,8 +59,8 @@ CREATE TABLE membre (
     nomAssociation VARCHAR(25),
     CIN INT,
     PRIMARY KEY(role, nomAssociation, CIN),
-    FOREIGN KEY (nomAssociation) REFERENCES association(nom),
-    FOREIGN KEY (CIN) REFERENCES universitaire(CIN)
+    FOREIGN KEY (nomAssociation) REFERENCES association(nom) ON DELETE CASCADE,
+    FOREIGN KEY (CIN) REFERENCES universitaire(CIN) ON DELETE CASCADE
 );
 
 /*PREMIER ARRET*/
@@ -70,7 +76,7 @@ CREATE TABLE spectacle (
     typeTheatre VARCHAR(25),
     genreStandUp genre_standup,
     association VARCHAR(25),
-    FOREIGN KEY (association) REFERENCES association(nom)
+    FOREIGN KEY (association) REFERENCES association(nom) ON DELETE CASCADE
 );
 
 
@@ -79,8 +85,8 @@ CREATE TABLE role(
     CIN INT,
     nomSpectacle VARCHAR(25),
     PRIMARY KEY(role, CIN, nomSpectacle),
-    FOREIGN KEY (CIN) REFERENCES universitaire(CIN),
-    FOREIGN KEY (nomSpectacle) REFERENCES spectacle(nom)
+    FOREIGN KEY (CIN) REFERENCES universitaire(CIN) ON DELETE CASCADE,
+    FOREIGN KEY (nomSpectacle) REFERENCES spectacle(nom) ON DELETE CASCADE
 );
 
 CREATE TABLE seance(
@@ -89,8 +95,8 @@ CREATE TABLE seance(
     nomSpectacle VARCHAR(25),
     numeroSalle INTEGER,
     batimentSalle VARCHAR(20),
-    FOREIGN KEY (nomSpectacle) REFERENCES spectacle(nom),
-    FOREIGN KEY (numeroSalle,batimentSalle) REFERENCES salle(numero, batiment)
+    FOREIGN KEY (nomSpectacle) REFERENCES spectacle(nom) ON DELETE CASCADE,
+    FOREIGN KEY (numeroSalle,batimentSalle) REFERENCES salle(numero, batiment) ON DELETE CASCADE
 );
 
 CREATE TABLE CategorieBillet(
@@ -106,7 +112,7 @@ CREATE TABLE Billet(
     categorie VARCHAR(25),
     seance INT,
     PRIMARY KEY (personne, categorie),
-    FOREIGN KEY (personne) REFERENCES Personne (id),
-    FOREIGN KEY (categorie) REFERENCES categorieBillet (nom),
-    FOREIGN KEY (seance) REFERENCES Seance(id)
+    FOREIGN KEY (personne) REFERENCES Personne (id) ON DELETE CASCADE,
+    FOREIGN KEY (categorie) REFERENCES categorieBillet (nom) ON DELETE CASCADE,
+    FOREIGN KEY (seance) REFERENCES Seance(id) ON DELETE CASCADE
 );

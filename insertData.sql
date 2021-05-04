@@ -1,13 +1,14 @@
 
 INSERT INTO Salle(numero,batiment,type,nbPersonne) VALUES(18,'BF','salle de cours', 30);
+INSERT INTO Salle(numero,batiment,type,nbPersonne) VALUES(121,'BF','salle de cours', 40);
 INSERT INTO Salle(numero,batiment,type,nbPersonne) VALUES(20,'PG','amphitheatre',300);
 
 INSERT INTO Personne(nom, prenom) VALUES('Jean','Dupont');
 INSERT INTO Personne(nom,prenom) VALUES('Victor', 'Martin');
 
-INSERT INTO Association (nom, description, mail, dateCrea, siteWeb, categorie, numeroSalle, batimentSalle) VALUES ('DBS City','Meilleurs voleurs d evenement','bigN@dbs.com','1800-11-09','google.com','Vol',18,'BF');
-INSERT INTO Association (nom, description, mail, dateCrea, siteWeb, categorie, numeroSalle, batimentSalle) VALUES ('Festufric','Le fric c est chic','assopaumee@oula.com','1500-10-09','Ohbeh.com','Hola',20,'PG');
-
+INSERT INTO Association (nom, description, mail, dateCrea, siteWeb, categorie, numeroSalle, batimentSalle) VALUES ('DBS City','Evènement','bigN@dbs.com','1800-11-09','google.com','Vol',18,'BF');
+INSERT INTO Association (nom, description, mail, dateCrea, siteWeb, categorie, numeroSalle, batimentSalle) VALUES ('Festufric','Evènement','assopaumee@oula.com','1500-10-09','Ohbeh.com','Hola',20,'PG');
+INSERT INTO Association (nom, description, mail, dateCrea, siteWeb, categorie, numeroSalle, batimentSalle) VALUES ('Eturaclette','Restauration','manger@manger.com','2021-04-09','OhMiam.com','Yiha',121,'BF');
 INSERT INTO universitaire(personne,CIN,categorie) VALUES(1,987456,'etudiant');
 INSERT INTO PersonneExterieure(personne,numeroTelephone,organismeAffiliation) VALUES(2,0777777777,'CompiCity');
 
