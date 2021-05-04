@@ -1,7 +1,7 @@
 import os
 
 
-def screen_clear():
+def screenClear():
     # for mac and linux(here, os.name is 'posix')
     if os.name == 'posix':
         os.system('export TERM=xterm')

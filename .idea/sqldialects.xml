@@ -4,7 +4,9 @@
     <file url="file://$PROJECT_DIR$/applicatif_python/association.py" dialect="PostgreSQL" />
     <file url="file://$PROJECT_DIR$/applicatif_python/person.py" dialect="PostgreSQL" />
     <file url="file://$PROJECT_DIR$/applicatif_python/room.py" dialect="PostgreSQL" />
+    <file url="file://$PROJECT_DIR$/applicatif_python/seance.py" dialect="PostgreSQL" />
     <file url="file://$PROJECT_DIR$/applicatif_python/spectacle.py" dialect="PostgreSQL" />
+    <file url="file://$PROJECT_DIR$/applicatif_python/ticket.py" dialect="PostgreSQL" />
     <file url="file://$PROJECT_DIR$/createdb.sql" dialect="PostgreSQL" />
     <file url="file://$PROJECT_DIR$/insertData.sql" dialect="PostgreSQL" />
   </component>

@@ -37,7 +37,7 @@ def printRoom(cur):
 
 
 def editRoom(cur):
-    print_room(cur)
+    printRoom(cur)
     num = input("Numéro de la salle à modifier")
     batiment = input("Nom du batiment à modifier")
     new_num = input("Entrer le numero de salle.")

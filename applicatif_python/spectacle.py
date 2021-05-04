@@ -4,7 +4,7 @@ import association
 def insertSpectacle(cur):
     nomSpectacle = input("Quel est le nom du spectacle ?")
     dureeSpectacle = input("Quel est la durée du Spectacle ? Format HH:MM:SS")
-    association.print_asso(cur)
+    association.printAsso(cur)
     nomAsso = input("Quel est le nom de l'association gérant ce spectacle")
     print("Quel type de spectacle voulez vous ajouter ? \n 1 - Concert \n 2 - Théâtre \n 3 - Stand-Up")
     typeSpectacle = -1
@@ -74,7 +74,7 @@ def editSpectacle(cur):
     printSpectacle(cur)
     nomSpectacle = input("Quel est le nom du spectacle à modifier ?")
     dureeSpectacle = input("Quel est la durée du Spectacle ? Format HH:MM:SS")
-    association.print_asso(cur)
+    association.printAsso(cur)
     nomAsso = input("Quel est le nom de l'association gérant ce spectacle")
     print("Quel type de spectacle ? \n 1 - Concert \n 2 - Théâtre \n 3 - Stand-Up")
     typeSpectacle = -1

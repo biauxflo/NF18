@@ -1,4 +1,4 @@
-def insert_catBillet(cur):
+def insertCatBillet(cur):
     nom = input("Entrer le nom de la catégorie")
     nbPlace = input("Entrer le nombre de place disponibles")
     sql = "INSERT INTO CategorieBillet(nom,nbrPlace) VALUES('%s',%s)" % (
@@ -8,14 +8,14 @@ def insert_catBillet(cur):
 
 
 
-def delete_catBillet(cur):
+def deleteCatBillet(cur):
     nom = input("Entrer le nom de la catégorie à supprimer")
-    sql = "DELETE FROM CategorieBillet WHERE nom = '%s'" % (nom)
+    sql = "DELETE FROM CategorieBillet WHERE nom = '%s'" % nom
     print(sql)
     cur.execute(sql)
 
 
-def print_catBillet(cur):
+def printCatBillet(cur):
     sql = "SELECT * FROM CategorieBillet GROUP BY nom,nbrPlace ORDER BY nbrPlace;"
     cur.execute(sql)
     print("nom | nombre de place")
@@ -25,8 +25,8 @@ def print_catBillet(cur):
         raw = cur.fetchone()
 
 
-def edit_catBillet(cur):
-    print_catBillet(cur)
+def editCatBillet(cur):
+    printCatBillet(cur)
     nom = input("Entrer le nom de la catégorie à modifier")
     new_nom = input("Entrer le nouveau nom de la catégorie")
     new_nbPlace = input("Entrer le nombre de place disponibles")

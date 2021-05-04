@@ -1,4 +1,4 @@
-def insert_asso(cur, sql_salle=None):
+def insertAsso(cur, sql_salle=None):
     nom = input("Entrer le nom de l'association.")
     description = input("Entrer la description de l'association.")
     mail = input("Entrer l'adresse mail de l'association.")
@@ -23,25 +23,26 @@ def insert_asso(cur, sql_salle=None):
     cur.execute(sql)
 
 
-def delete_asso(cur):
+def deleteAsso(cur):
     nom = input("Entrer le nom de l'association à supprimer.")
     sql = "DELETE FROM association WHERE nom = %s " % (nom)
     print(sql)
     cur.execute(sql)
 
 
-def print_asso(cur):
+def printAsso(cur):
     sql = "SELECT * FROM association GROUP BY nom,categorie ORDER BY categorie,nom;"
     cur.execute(sql)
     print("nom | catégorie | descriptiion | mail | date de création | site Web | numero de la salle | batiment")
     raw = cur.fetchone()
     while raw:
-        print(raw[0] + "|" + raw[1] + "|" + raw[3] + "|" + str(raw[4]) + "|" + raw[5] + "|" + str(raw[6]) + "|" + raw[7])
+        print(
+            raw[0] + "|" + raw[1] + "|" + raw[3] + "|" + str(raw[4]) + "|" + raw[5] + "|" + str(raw[6]) + "|" + raw[7])
         raw = cur.fetchone()
 
 
-def edit_asso(cur):
-    print_asso(cur)
+def editAsso(cur):
+    printAsso(cur)
     nom = input("Nom de l'asso à modifier")
     new_nom = input("Entrer le nom de l'association.")
     new_description = input("Entrer la description de l'association.")
@@ -65,22 +66,23 @@ def edit_asso(cur):
     print(sql)
     cur.execute(sql)
 
-def insert_membre(cur):
+
+def insertMembre(cur):
     print("Quel est rôle ?\n 1 - Président,\n 2 - Tresorier,\n 3 - Membre")
     role = 0
-    while role < 1 | type_bat > 3:
-        type_bat = input("Choix ?")
-    if type_bat == 1:
-        type_bat = "president"
-    if type_bat == 2:
-        type_bat = "tresorier"
-    if type_bat == 3:
-        type_bat = "membre"
-    print_asso(cur)
+    while role < 1 | role > 3:
+        role = input("Choix ?")
+    if role == 1:
+        role = "president"
+    if role == 2:
+        role = "tresorier"
+    if role == 3:
+        role = "membre"
+    printAsso(cur)
     nomAsso = input("Entrer le nom de l'association")
     print("Voici la liste des étudiants : \n")
     sqlaffetu = "SELECT personne.id, personne.nom, personne.prenom, universitaire.cin, universitaire.categorie " \
-          "FROM Personne, universitaire WHERE personne.id = universitaire.personne and universitaire.categorie = 'etudiant';"
+                "FROM Personne, universitaire WHERE personne.id = universitaire.personne and universitaire.categorie = 'etudiant';"
     cur.execute(sqlaffetu)
     print("[id] nom prénom CIN categorie")
     raw = cur.fetchone()
@@ -88,23 +90,28 @@ def insert_membre(cur):
         print("[" + str(raw[0]) + "] " + raw[1] + " " + str(raw[2]) + " " + str(raw[3]) + " " + str(raw[4]))
         raw = cur.fetchone()
     CIN = input("Entrer le numero CIN de l'étudiant")
-    sql = "INSERT INTO membre(role,nomassociation,cin) VALUES ('%s','%s',%s) " % (role,nomAsso,CIN)
+    sql = "INSERT INTO membre(role,nomassociation,cin) VALUES ('%s','%s',%s) " % (role, nomAsso, CIN)
     print(sql)
     cur.execute(sql)
 
-def delete_membre(cur):
-    print_membre(cur)
+
+def deleteMembre(cur):
+    printAsso(cur)
+    nomAssociation = input("Quel est le nom de l'association concerné ?")
+    printMembre(cur)
     num_cin = input("Entrez le numero cin de l'etudiant à supprimer")
     role = input("Entre le role de l'étudiant à supprimer")
-    sql = "DELETE FROM membre WHERE nomassociation = '%s' and cin = %s and role = %s" %(nomAssociation,num_cin,role)
+    sql = "DELETE FROM membre WHERE nomassociation = '%s' and cin = %s and role = %s" % (nomAssociation, num_cin, role)
+    print(sql)
+    cur.execute(sql)
 
 
-
-
-def print_membre(cur):
+def printMembre(cur):
     nomAsso = input("Entrer le nom de l'association dont vous souhaitez afficher les membres")
     print("Voici les membres de cette association")
-    sqlaff = "SELECT p.nom, p.prenom, u.cin, m.role FROM membre as m  JOIN universitaire as u ON m.cin = u.cin JOIN Personne as p ON u.personne = p.id WHERE m.nomassociation = '%s'" %(nomAsso)
+    sqlaff = "SELECT p.nom, p.prenom, u.cin, m.role FROM membre as m  JOIN universitaire as u ON m.cin = u.cin JOIN Personne as p ON u.personne = p.id WHERE m.nomassociation = '%s'" % nomAsso
+    print(sqlaff)
+    cur.execute(sqlaff)
     print("nom prénom CIN role")
     raw = cur.fetchone()
     while raw:

@@ -19,7 +19,7 @@ if __name__ == '__main__':
     cur = conn.cursor()
     choix = 0
     while choix != 5:
-        command.screen_clear()
+        command.screenClear()
         print("MENU : choix de l'action à réaliser :\n1 - Ajouter une personne,\n2 - Supprimer une personne "
               "inscrite\n3 - Afficher les personnes inscrites population \n4 - Ajouter une association\n5 - Quitter")
         choix = int(input("Choix ? "))
