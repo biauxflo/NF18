@@ -14,7 +14,7 @@ INSERT INTO PersonneExterieure(personne,numeroTelephone,organismeAffiliation) VA
 
 INSERT INTO membre(role,nomAssociation,CIN) VALUES('president','DBS City', 987456);
 
-INSERT INTO Spectacle (nom, duree, type, compositeur, anneeParution, genreConcert,association) VALUES('Vol de spectacle','05:04:00', 'concert','bigN','2021-03-11','Techno', 'DBS City');
+INSERT INTO Spectacle (nom, duree, typeSpectacle, compositeur, anneeParution, genreConcert,association) VALUES('Vol de spectacle','05:04:00', 'concert','bigN','2021-03-11','Techno', 'DBS City');
 
 INSERT INTO role(role, CIN, nomSpectacle) VALUES('Régisseur',987456,'Vol de spectacle');
 

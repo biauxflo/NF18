@@ -1,16 +1,16 @@
 def insertPerson(cur):
-    nom = input("Entrer le nom.")
-    pre = input("Entrer le prénom")
+    nom = input("Entrer le nom : ")
+    pre = input("Entrer le prénom : ")
     typePerson = -1
     print("Personnel/Etudiant de l'UTX ou personne extérieure ?\n 1 - Université\n 2 - Extérieure")
-    while typePerson != 1 & typePerson != 2:
+    while typePerson != 1 and typePerson != 2:
         typePerson = int(input("Choix de type"))
 
     if typePerson == 1:
-        CIN = input("Entrer le CIN de la personne")
+        CIN = input("Entrer le CIN de la personne : ")
         print("Quel est le type de la personne ?\n 1 - Etudiant,\n2 - Personnel technique,\n 3 - Personnel enseignant \n 4 - Personnel administratif")
         typeUni = 0
-        while typeUni < 1 | typeUni > 4:
+        while typeUni < 1 or typeUni > 4:
             typeUni = int(input("Choix ?"))
         if typeUni == 1:
             typeUni = "etudiant"
@@ -20,7 +20,7 @@ def insertPerson(cur):
             typeUni = "enseignant"
         if typeUni == 4:
             typeUni = "administratif"
-        sql = "INSERT INTO personne(nom,prenom) VALUES(%s,'%s')" % (nom, pre)
+        sql = "INSERT INTO personne(nom,prenom) VALUES('%s','%s')" % (nom, pre)
         print(sql)
         cur.execute(sql)
         idPerson = getIdPerson(cur, nom, pre)
@@ -44,9 +44,11 @@ def insertPerson(cur):
 def deletePerson(cur):
     printPerson(cur)
     typePers = 0
+    print("Etape 1 : ")
     print("Dans l'université ou à l'extérieur ?\n 1 - Université, 2 - Extérieur")
-    while typePers != 1 & typePers != 2:
-        typePers = input("Choix : ")
+    while typePers != 1 and typePers != 2:
+        typePers = int(input("Choix : "))
+    print("Etape 2 : ")
     idToDelete = input("Quel est l'ID de la personne à supprimer ?")
     if typePers == 1:
         sql = "DELETE FROM universitaire WHERE personne = %s" % idToDelete
@@ -82,23 +84,34 @@ def printPerson(cur):
     while raw:
         print("[" + str(raw[0]) + "] " + raw[1] + " " + str(raw[2]) + " " + str(raw[3]) + " " + str(raw[4]))
         raw = cur.fetchone()
+    end = input("Finis ?")
+
+
+def printUniversitaire(cur):
+    sql = "SELECT universitaire.CIN, personne.nom, personne.prenom FROM universitaire, personne WHERE universitaire.personne = personne.id"
+    cur.execute(sql)
+    print("[CIN] nom prénom")
+    raw = cur.fetchone()
+    while raw:
+        print("[" + str(raw[0]) + "] " + raw[1] + " " + str(raw[2]))
+        raw = cur.fetchone()
 
 
 def editPerson(cur):
     printPerson(cur)
     typePers = 0
     print("Dans l'université ou à l'extérieur ?\n 1 - Université, 2 - Extérieur")
-    while typePers != 1 & typePers != 2:
+    while typePers != 1 and typePers != 2:
         typePers = int(input("Choix : "))
     idToEdit = input("Quel est l'ID de la personne à modifier ?")
     newName = input("Quel est le nouveau nom ?")
     newFirstName = input("Quel est le nouveau Prénom ?")
     if typePers == 1:
-        newCIN = input("Entrez le CIN de la personne à supprimer :")
+        newCIN = input("Entrez le CIN de la personne à modifier :")
         print("Quel est le type de la personne ?\n 1 - Etudiant,\n2 - Personnel technique,\n 3 - Personnel enseignant \n "
               "4 - Personnel administratif")
         newTypeUni = 0
-        while newTypeUni < 1 | newTypeUni > 4:
+        while newTypeUni < 1 or newTypeUni > 4:
             newTypeUni = int(input("Choix ?"))
         if newTypeUni == 1:
             newTypeUni = "etudiant"
@@ -127,9 +140,11 @@ def editPerson(cur):
 
 def getIdPerson(cur, nom, prenom):
     sql = "SELECT * FROM Personne WHERE nom = '%s' AND prenom = '%s'" % (nom, prenom)
+    print(sql)
     cur.execute(sql)
     raw = cur.fetchone()
-    idPersonne = ""
-    while raw:
+    if raw:
         idPersonne = str(raw[0])
-    return idPersonne
+        return idPersonne
+    else:
+        print("error")

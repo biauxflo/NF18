@@ -3,10 +3,7 @@ DROP TABLE IF EXISTS  personne CASCADE;DROP TABLE IF EXISTS  universitaire CASCA
 DROP TABLE IF EXISTS  role CASCADE;DROP TABLE IF EXISTS  spectacle CASCADE;DROP TABLE IF EXISTS  billet CASCADE;DROP TABLE IF EXISTS  seance CASCADE;
 DROP TABLE IF EXISTS  categorieBillet CASCADE;
 DROP TYPE IF EXISTS type_salle;DROP TYPE IF EXISTS cat;DROP TYPE IF EXISTS role_asso;DROP TYPE  IF EXISTS genre_standup;DROP TYPE IF EXISTS typeSpectacle;
-DROP user if exists utilisateur_projet;
 
-CREATE USER utilisateur_projet with password 'groupe1sujet4';
-GRANT ALL PRIVILEGES ON DATABASE projetGroupe1 to utilisateur_projet;
 CREATE TYPE type_salle AS ENUM ('salle de cours', 'bureau', 'amphitheatre');
 CREATE TABLE Salle (
    numero INTEGER,
@@ -69,6 +66,7 @@ CREATE TYPE typeSpectacle AS ENUM('concert', 'stand-up', 'piece de theatre');
 CREATE TABLE spectacle (
     nom VARCHAR(25) PRIMARY KEY,
     duree TIME NOT NULL,
+    typeSpectacle typeSpectacle,
     compositeur VARCHAR(50),
     anneeParution DATE,
     genreConcert VARCHAR(25),
@@ -106,13 +104,13 @@ CREATE TABLE CategorieBillet(
 );
 
 CREATE TABLE Billet(
-    dateCreation DATE NOT NULL,
+    dateCreation timestamp NOT NULL,
     personne INTEGER,
     tarif INTEGER NOT NULL,
     categorie VARCHAR(25),
     seance INT,
     PRIMARY KEY (personne, categorie),
     FOREIGN KEY (personne) REFERENCES Personne (id) ON DELETE CASCADE,
-    FOREIGN KEY (categorie) REFERENCES categorieBillet (nom) ON DELETE CASCADE,
+    FOREIGN KEY (categorie) REFERENCES categorieBillet (nom) ON DELETE CASCADE ON UPDATE CASCADE,
     FOREIGN KEY (seance) REFERENCES Seance(id) ON DELETE CASCADE
 );
