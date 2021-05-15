@@ -139,12 +139,14 @@ def deleteRole(cur):
     sql = "DELETE FROM role WHERE role = '%s' AND CIN = %s AND nomspectacle = '%s'" % (role, personId, spectacleName)
     cur.execute(sql)
 
+
 def printRole(cur):
-    sql = "SELECT * FROM Role"
+    sql = "SELECT role.role, personne.nom, personne.prenom, role.nomspectacle  FROM Role,personne, universitaire " \
+          "WHERE role.cin = universitaire.cin AND universitaire.personne = personne.id"
     cur.execute(sql)
-    print("Role CIN Nom du Spectacle")
+    print("Role | Personne de l'université | Nom du Spectacle")
     raw = cur.fetchone()
     while raw:
-        print(str(raw[0]) + ", " + str(raw[1]) + "," + str(raw[2]))
+        print(str(raw[0]) + " | " + str(raw[2]) + " " + str(raw[1]) + " | " + str(raw[3]))
         raw = cur.fetchone()
     end = input("Finis ?")

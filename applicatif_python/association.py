@@ -34,7 +34,7 @@ def deleteAsso(cur):
 def printAsso(cur):
     sql = "SELECT * FROM association GROUP BY nom,categorie ORDER BY categorie,nom;"
     cur.execute(sql)
-    print("nom | catégorie | descriptiion | mail | date de création | site Web | numero de la salle | batiment")
+    print("nom | catégorie | descriptiion | mail | date de création | site Web | salle de réunion | batiment")
     raw = cur.fetchone()
     while raw:
         print(
