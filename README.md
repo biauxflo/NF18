@@ -228,7 +228,7 @@ psql nomBDD
 
 Ensuite pour créer les différentes tables, il faut tout d'abord copier/coller le contenu du fichier createdb.sql dans le terminal PostgreSQL puis effectuer la même étape avec le contenu du fichier insertData.sql pour le remplissage.
 
-Pour enfin relier le projet à sa base de donnée, il suffit de remplacer les champs **dbname**, **user**, **password** du fichier **connection_db.py** à la ligne 6 qui est la suivante : 
+Pour enfin relier le projet à sa base de donnée, il suffit de remplacer les champs '#' en face de **dbname**, **user**, **password** du fichier **connection_db.py** à la ligne 6 qui est la suivante : 
 
 ```
 return psycopg2.connect("host=localhost dbname=# user=# password=#")
