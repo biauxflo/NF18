@@ -79,7 +79,7 @@ CREATE TABLE spectacle (
 
 
 CREATE TABLE role(
-    role VARCHAR(25),
+    role  VARCHAR(25),
     CIN INT,
     nomSpectacle VARCHAR(25),
     PRIMARY KEY(role, CIN, nomSpectacle),

@@ -23,7 +23,7 @@ if __name__ == '__main__':
     conn = connection_db.getConnection()
     cur = conn.cursor()
     choix = 0
-    while choix != 36:
+    while choix != 35:
         screenClear()
         print("MENU : choix de l'action à réaliser :\n1 - Ajouter une personne,\n2 - Supprimer une personne "
               "inscrite\n3 - Afficher les personnes inscrites\n4 - Modifier les infos d'une personne \n5 - Ajouter une association\n"
@@ -34,8 +34,7 @@ if __name__ == '__main__':
               "22 - Supprimer un Billet\n23 - Modifier un billet\n24 - Afficher les billets \n25 - Insérer un membre \n"
               "26 - Supprimer un membre \n27 - Afficher les membres \n28 - Ajouter une catégorie de billet \n29 - Supprimer une catégorie "
               "de billet \n30 - Modifier un catégorie de billet \n31 - Afficher les catégories de billet \n32 - Ajouter un role dans un spectacle \n"
-              "33 - Supprimer un role dans un spectacle \n34 - Afficher les roles dans des spectacles \n35 - Modifier le rôle de quelqu'un \n"
-              "36 - Quitter")
+              "33 - Supprimer un role dans un spectacle \n34 - Afficher les roles dans des spectacles \n35 - Quitter")
         choix = int(input("Choix ? "))
         if choix == 1:
             person.insertPerson(cur)
@@ -140,8 +139,5 @@ if __name__ == '__main__':
             spectacle.printRole(cur)
             conn.commit()
         if choix == 35:
-            spectacle.editRole(cur)
-            conn.commit()
-        if choix == 36:
             conn.close()
             print("Fin du Programme")

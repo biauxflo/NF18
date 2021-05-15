@@ -139,23 +139,6 @@ def deleteRole(cur):
     sql = "DELETE FROM role WHERE role = '%s' AND CIN = %s AND nomspectacle = '%s'" % (role, personId, spectacleName)
     cur.execute(sql)
 
-
-def editRole(cur):
-    printRole(cur)
-    role = input("Entrer le nom du role concerné : ")
-    person.printUniversitaire(cur)
-    personCIN = input("Entrer le CIN de la personne concernée : ")
-    spectacleName = input("Entrer le nom du spectacle concerné : ")
-    newRole = input("Entrer le nouveau nom du role : ")
-    person.printUniversitaire(cur)
-    newCINPerson = input("Entrer le nouveau CIN de la personne concernée : ")
-    printSpectacle(cur)
-    newSpectacleName = input("Entrer le nouveau nom du spectacle : ")
-    sql = "UPDATE Role SET role= '%s', cin=%s, nomspectacle='%s' WHERE cin=%s AND role = '%s' AND nomspectacle='%s'" \
-          % (newRole, newCINPerson, newSpectacleName, personCIN, role, spectacleName)
-    cur.execute(sql)
-
-
 def printRole(cur):
     sql = "SELECT * FROM Role"
     cur.execute(sql)

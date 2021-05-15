@@ -81,6 +81,13 @@ def insertMembre(cur):
         role = "membre"
     printAsso(cur)
     nomAsso = input("Entrer le nom de l'association : ")
+    if role != "membre":
+        sql = "SELECT * FROM membre WHERE nomassociation = '%s' AND role = '%s'" % (nomAsso, role)
+        cur.execute(sql)
+        row = cur.fetchone
+        if row:
+            print("Le rôle est déjà occupé, veuillez supprimer l'ancienne personne occupant ce rôle de la table ou attendez. ")
+            return 1
     print("Voici la liste des étudiants : \n")
     sqlaffetu = "SELECT personne.id, personne.nom, personne.prenom, universitaire.cin, universitaire.categorie " \
                 "FROM Personne, universitaire WHERE personne.id = universitaire.personne and universitaire.categorie = 'etudiant';"
