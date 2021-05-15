@@ -255,8 +255,14 @@ Il suffit d'installer le module psycopg2 avec la commande suivante :
 Pour activer l'envirronement virtuel et lancer le projet, il suffit de lancer les commandes suivantes :
 
 - Sous système UNIX : 
-```cd ../
-source venv/bin/activate ```
+
+``` 
+cd ../
+source venv/bin/activate 
+```
 
 - Sous Windows, après s'être placé dans le fichier principal : 
-``` venv\Scripts\activate ```
+
+```
+venv\Scripts\activate
+```
