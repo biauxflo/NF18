@@ -213,3 +213,56 @@ Si l'utilisateur est un membre du personnel technique ou enseignant, il peut eff
 
 Si l'utilisateur est extérieure à l'UTX, il peut effectuer les actions suivantes :
 - Acheter un ou plusieurs billet pour un spectacle  (=> Modification de la Base de donnée au niveau de la classe Billet)
+
+
+<h2>Installlation en local et test du Projet</h2>
+
+<h3>Installation et configuration de la Base de donnée</h3>
+
+Tout d'abord, il faut créer la base de donnée et retenir son nom, pour cela on effectue la commande suivante : 
+
+```
+createdb <nomBDD>
+psql nomBDD
+```
+
+Ensuite pour créer les différentes tables, il faut tout d'abord copier/coller le contenu du fichier createdb.sql dans le terminal PostgreSQL puis effectuer la même étape avec le contenu du fichier insertData.sql pour le remplissage.
+
+Pour enfin relier le projet à sa base de donnée, il suffit de remplacer les champs '#' en face de **dbname**, **user**, **password** du fichier **connection_db.py** à la ligne 6 qui est la suivante : 
+
+```
+return psycopg2.connect("host=localhost dbname=# user=# password=#")
+```
+
+<h3>Lancement et test du projet</h3>
+
+Pour cela, il suffit de se placer dans le dossier **applicatif_python** et d'exécuter la commande suivante :
+
+```python3 menu.py```
+
+Un menu propose alors les différents choix qui vous sont proposés, à vous de choisir. 
+
+<h3>Résolution de bug</h3>
+
+Dans le cas où il est indiqué que la bibliothèque psycopg2 est inconnue, avec l'erreur suivante : 
+
+```ModuleNotFoundError: No module named 'psycopg2'```
+
+Il suffit d'installer le module psycopg2 avec la commande suivante : 
+
+```pip3 install psycopg2-binary```
+
+Pour activer l'envirronement virtuel et lancer le projet, il suffit de lancer les commandes suivantes :
+
+- Sous système UNIX : 
+
+``` 
+cd ../
+source venv/bin/activate 
+```
+
+- Sous Windows, après s'être placé dans le fichier principal : 
+
+```
+venv\Scripts\activate
+```
