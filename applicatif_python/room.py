@@ -60,3 +60,18 @@ def editRoom(cur):
     print(sql)
     cur.execute(sql)
 
+
+def getAvailable(cur, idSeance):
+    sql = "SELECT count(*) FROM billet WHERE seance = " + idSeance
+    cur.execute(sql)
+    row = cur.fetchone()
+    placeOccupied = int(row[0])
+    sql = "SELECT nbpersonne FROM seance, salle WHERE seance.id = " + idSeance + " AND seance.numeroSalle = salle.numero " \
+                                                                                 "AND seance.batimentSalle = salle.batiment;"
+    cur.execute(sql)
+    row = cur.fetchone()
+    placeTotal = row[0]
+    if placeTotal <= placeOccupied:
+        return "false"
+    else:
+        return "true"

@@ -109,7 +109,7 @@ CREATE TABLE Billet(
     tarif INTEGER NOT NULL,
     categorie VARCHAR(25),
     seance INT,
-    PRIMARY KEY (personne, categorie),
+    PRIMARY KEY (seance, personne, categorie),
     FOREIGN KEY (personne) REFERENCES Personne (id) ON DELETE CASCADE,
     FOREIGN KEY (categorie) REFERENCES categorieBillet (nom) ON DELETE CASCADE ON UPDATE CASCADE,
     FOREIGN KEY (seance) REFERENCES Seance(id) ON DELETE CASCADE

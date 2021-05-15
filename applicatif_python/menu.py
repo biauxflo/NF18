@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 import connection_db
-import command
 import person
 import association
 import room
@@ -144,6 +143,5 @@ if __name__ == '__main__':
             spectacle.editRole(cur)
             conn.commit()
         if choix == 36:
-
             conn.close()
             print("Fin du Programme")

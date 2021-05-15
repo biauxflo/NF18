@@ -1,7 +1,7 @@
 from _datetime import datetime
 import person
 import seance
-
+import room
 
 def insertCatBillet(cur):
     nom = input("Entrer le nom de la catégorie : ")
@@ -83,6 +83,9 @@ def insertBillet(cur):
         return 1
     seance.printSeance(cur)
     seanceTargetted = input("Entrer l'id de la séance souhaitée : ")
+    if room.getAvailable(cur, seanceTargetted) == "false":
+        print("Erreur : Salle pleine.")
+        return 1
     sql = "INSERT INTO billet(datecreation, personne, tarif, categorie, seance) VALUES ('%s', '%s', %s, '%s', %s)" % \
           (date, buyer, tarif, cat, seanceTargetted)
     print(sql)
