@@ -152,13 +152,13 @@ if __name__ == '__main__':
                 if choix == 1:
                     seance.insertSeance(cur)
                     conn.commit()
-                if choix == 2:
+                elif choix == 2:
                     seance.deleteSeance(cur)
                     conn.commit()
-                if choix == 3:
+                elif choix == 3:
                     seance.editSeance(cur)
                     conn.commit()
-                if choix == 4:
+                elif choix == 4:
                     seance.printSeance(cur)
                     conn.commit()
                 elif choix == 5:
@@ -216,10 +216,10 @@ if __name__ == '__main__':
                 if choix == 1:
                     association.insertMembre(cur)
                     conn.commit()
-                if choix == 2:
+                elif choix == 2:
                     association.deleteMembre(cur)
                     conn.commit()
-                if choix == 3:
+                elif choix == 3:
                     association.printMembre(cur)
                     conn.commit()
                 elif choix == 4:
