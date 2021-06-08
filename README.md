@@ -266,3 +266,10 @@ source venv/bin/activate
 ```
 venv\Scripts\activate
 ```
+
+<h2>Deuxième rendu de projet : Etude de la normalisation, des dépendances fonctionnelles, et de la conversion de données en NoSQL</h2>
+
+<h3>Tables étudiées</h3>
+<h4>Salle : </h4> (#numero : int, #bâtiment :string not NULL, type : {'salle de cours', 'bureau', 'amphithéâtre'}, nbPersonne : int not NULL)
+<h4>Association : </h4> (#nom : string, description : string, mail : string NOT NULL, dateCrea: Date not NULL, siteWeb: string, categorie: string, numeroSalle=>salle)
+<h4>Spectacle : </h4>
