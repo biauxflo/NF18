@@ -17,6 +17,7 @@ INSERT INTO membre(role,nomAssociation,CIN) VALUES('president','DBS City', 98745
 INSERT INTO Spectacle (nom, duree, typeSpectacle, compositeur, anneeParution, genreConcert,association, seances) VALUES
                       ('Vol de spectacle','05:04:00', 'concert','bigN','2021-03-11','Techno', 'DBS City',
                        '[{"date":"2021-10-05",
+                         "heure":"21:30",
                          "numSalle": 18,
                          "batimentSalle":"BF",
                          "categorieBillets": [{

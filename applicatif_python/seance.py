@@ -12,7 +12,7 @@ def insertSeance(cur):
     heure = input("Saisissez l'heure de la séance : HH:MM ")
     print("CREATION DE CATEGORIE DE BILLET")
     catBilletJson = ticket.insertCatBillet()
-    seanceJson += '{"date" :"' + date + '" , "numeroSalle" :"' + numeroSalle + '", "batimentSalle":"' + batimentSalle + '", "categorieBillets": "' + catBilletJson + '"}'
+    seanceJson += '{"date" :"' + date + '" , "heure" :"' + heure + '","numSalle" :"' + numeroSalle + '", "batimentSalle":"' + batimentSalle + '", "categorieBillets": ' + catBilletJson + '}'
     choix = 0
     while choix != 2:
         choix = int(input("Quel choix voulez-vous faire ?\n 1 - Insérer une nouvelle séance \n 2 - Retourner au menu\n"))
