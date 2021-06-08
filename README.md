@@ -279,3 +279,6 @@ venv\Scripts\activate
 <h3>Etude des dépendance fonctionnelles de ces tables </h3>
 
 - (numéro, bâtiment) => type, nbPersonne
+- séance.id -> nom.spectacle, salle.numéro, salle.bâtiment, séance.date
+- association.nom -> description, mail, dateCrea, siteWeb, catégorie, salle.numéro, salle.bâtiment
+- spectacle.nom -> duree, compositeur, anneeParution, genreConcert, auteur, typeTheatre, geerStandUp, typeSpectacle, association.nom
