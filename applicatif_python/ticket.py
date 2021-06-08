@@ -22,32 +22,15 @@ def insertCatBillet():
     return catBilletJson
 
 
-def deleteCatBillet(cur):
-    printCatBillet(cur)
-    nom = input("Entrer le nom de la catégorie à supprimer : ")
-    sql = "DELETE FROM CategorieBillet WHERE nom = '%s'" % nom
-    print(sql)
-    cur.execute(sql)
-
-
 def printCatBillet(cur):
-    sql = "SELECT * FROM CategorieBillet GROUP BY nom,nbrPlace ORDER BY nbrPlace;"
+    sql = "SELECT * FROM v_catbillet"
     cur.execute(sql)
-    print("nom | nombre de place")
+    print("nom du spectacle | nom | nombre de place")
     raw = cur.fetchone()
     while raw:
         print(raw[0] + "|" + str(raw[1]))
         raw = cur.fetchone()
     end = input("Finis ?")
-
-
-def editCatBillet(cur):
-    printCatBillet(cur)
-    cat = input("Entrer le nom de la catégorie à modifier : ")
-    nom = input("Entrer le nom de la catégorie : ")
-    nbrPlace = input("Entrer le nombre de place pour la seance : ")
-    sql = "UPDATE CategorieBillet SET nom= '%s', nbrplace = %s WHERE nom= '%s'" % (nom, nbrPlace, cat)
-    cur.execute(sql)
 
 
 def getNumberTicket(cur, cat):
@@ -58,7 +41,7 @@ def getNumberTicket(cur, cat):
 
 
 def isAvailable(cur, cat):
-    sql = "SELECT nbrPlace FROM categoriebillet WHERE nom = '" + cat + "'"
+    sql = "SELECT nbPersonne FROM v_catbillet WHERE nom = '" + cat + "'"
     cur.execute(sql)
     row = cur.fetchone()
     nbrPlace = int(row[0])
@@ -66,17 +49,6 @@ def isAvailable(cur, cat):
         return "true"
     else:
         return "false"
-
-
-def editCatBillet(cur):
-    printCatBillet(cur)
-    nom = input("Entrer le nom de la catégorie à modifier : ")
-    new_nom = input("Entrer le nouveau nom de la catégorie : ")
-    new_nbPlace = input("Entrer le nombre de place disponibles : ")
-    sql = "UPDATE CategorieBillet SET nom = '%s', nbrPlace = %s WHERE nom = '%s'" % \
-          (new_nom, new_nbPlace, nom)
-    print(sql)
-    cur.execute(sql)
 
 
 def insertBillet(cur):

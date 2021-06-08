@@ -3,6 +3,9 @@ DROP TABLE IF EXISTS  personne CASCADE;DROP TABLE IF EXISTS  universitaire CASCA
 DROP TABLE IF EXISTS  role CASCADE;DROP TABLE IF EXISTS  spectacle CASCADE;DROP TABLE IF EXISTS  billet CASCADE;DROP TABLE IF EXISTS  seance CASCADE;
 DROP TABLE IF EXISTS  categorieBillet CASCADE;
 DROP TYPE IF EXISTS type_salle;DROP TYPE IF EXISTS cat;DROP TYPE IF EXISTS role_asso;DROP TYPE  IF EXISTS genre_standup;DROP TYPE IF EXISTS typeSpectacle;
+DROP VIEW IF EXISTS v_seances CASCADE;
+DROP VIEW IF EXISTS v_catBillet CASCADE;
+
 
 CREATE TYPE type_salle AS ENUM ('salle de cours', 'bureau', 'amphitheatre');
 CREATE TABLE Salle (
@@ -98,6 +101,15 @@ CREATE TABLE Billet(
     PRIMARY KEY (seance, personne, categorie),
     FOREIGN KEY (personne) REFERENCES Personne (id) ON DELETE CASCADE
 );
+
+CREATE VIEW v_seances AS
+    SELECT spectacle.nom AS NomSpectacle, CAST(se->>'date' AS DATE) AS date, CAST(se->>'heure' AS TIME) AS heure, CAST(se->>'numSalle' AS INTEGER) AS numSalle, se->>'batimentSalle' AS batimentSalle, CAST(se->>'categorieBillets' AS JSON) AS categorieBillets
+    FROM spectacle, JSON_ARRAY_ELEMENTS(spectacle.seances) se;
+
+CREATE VIEW v_catBillet AS
+    SELECT v_seances.NomSpectacle AS NomSpectacle, cat->>'nom' AS Nom, CAST(cat->>'nbPersonne' AS INTEGER) AS nbPersonne
+    FROM v_seances, JSON_ARRAY_ELEMENTS(v_seances.categoriebillets) cat;
+
 /*CREATE TABLE seance(
     id SERIAL PRIMARY KEY,
     date DATE NOT NULL,
