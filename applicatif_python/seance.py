@@ -9,6 +9,8 @@ def insertSeance(cur):
     room.printRoom(cur)
     numeroSalle = input("Quelle numero de salle ? ")
     batimentSalle = input("Dans quel batiment ? ")
+    heure = input("Saisissez l'heure de la séance : HH:MM ")
+    print("CREATION DE CATEGORIE DE BILLET")
     catBilletJson = ticket.insertCatBillet()
     seanceJson += '{"date" :"' + date + '" , "numeroSalle" :"' + numeroSalle + '", "batimentSalle":"' + batimentSalle + '", "categorieBillets": "' + catBilletJson + '"}'
     choix = 0
@@ -21,16 +23,15 @@ def insertSeance(cur):
             numeroSalle = input("Quelle numero de salle ? ")
             batimentSalle = input("Dans quel batiment ? ")
             catBilletJson = ticket.insertCatBillet()
-            seanceJson += '{"date" :"' + date + '" , "numeroSalle" :"' + numeroSalle + '", "batimentSalle":"' + batimentSalle + '", "categorieBillets": "' + catBilletJson + '"}'
+            seanceJson += '{"date" :"' + date + '" , "numSalle" :"' + numeroSalle + '", "batimentSalle":"' + batimentSalle + '", "categorieBillets": ' + catBilletJson + '}'
     seanceJson += ']'
     return seanceJson
 
 
 def printSeance(cur):
-    sql = "SELECT * FROM seance"
-    print(sql)
+    sql = "SELECT * FROM v_seances"
     cur.execute(sql)
-    print("[Id] | date | Spectacle | numéro de Salle | Bâtiment")
+    print("[Nom du Spectacle] | date | heure | Spectacle | numéro de Salle | Bâtiment")
     raw = cur.fetchone()
     while raw:
         print("[" + str(raw[0]) + "] " + str(raw[1]) + " " + str(raw[2]) + " " + str(raw[3]) + " " + str(raw[4]))

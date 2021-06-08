@@ -5,8 +5,8 @@ import association
 import room
 import seance
 import spectacle
-import ticket
 import os
+import ticket
 
 
 def screenClear():
@@ -25,11 +25,11 @@ if __name__ == '__main__':
     cat = 0
     while cat != 8:
         screenClear()
-        cat = int(input("MENU : choix de la catégorie:\n1 - Personne\n2 - Assiciation\n3 - Salle"
-              "\n4 - Spectacle\n5 - Séance \n6 - Billet\n7 - Membre\n8 - Quitter\nChoix: "))
+        cat = int(input("MENU : choix de la catégorie:\n1 - Personne\n2 - Association\n3 - Salle"
+                        "\n4 - Spectacle\n5 - Séance \n6 - Billet\n7 - Membre\n8 - Quitter\nChoix: "))
 
         flag = 1
-        if cat == 1: #Personne
+        if cat == 1:  # Personne
             while flag == 1:
                 screenClear()
                 print("Choix de l'action à réaliser:")
@@ -55,7 +55,7 @@ if __name__ == '__main__':
                 else:
                     print("Choix invalid, réessayez s'il vous plait.\n")
                     flag = 1
-        elif cat == 2:#Association
+        elif cat == 2:  # Association
             while flag == 1:
                 screenClear()
                 print("Choix de l'action à réaliser:")
@@ -139,29 +139,19 @@ if __name__ == '__main__':
                 elif choix == 8:
                     flag == 1
                 else:
-                    print("Choix invalid, réessayez s'il vous plait.\n")
+                    print("Choix invalide, réessayez s'il vous plait.\n")
                     flag = 1
         elif cat == 5:  # Séance
             while flag == 1:
                 screenClear()
                 print("Choix de l'action à réaliser:")
                 flag = 0
-                print("\n1 - Ajouter une séance\n2 - Supprimer une séance\n"
-                      "3 - Modifier une séance\n4 - Afficher les séances \n5 - Retourner\n")
+                print("\n1 - Afficher les séances \n2 - Retourner\n")
                 choix = int(input("Choix ? "))
                 if choix == 1:
-                    seance.insertSeance(cur)
-                    conn.commit()
-                elif choix == 2:
-                    seance.deleteSeance(cur)
-                    conn.commit()
-                elif choix == 3:
-                    seance.editSeance(cur)
-                    conn.commit()
-                elif choix == 4:
                     seance.printSeance(cur)
                     conn.commit()
-                elif choix == 5:
+                elif choix == 2:
                     flag == 1
                 else:
                     print("Choix invalid, réessayez s'il vous plait.\n")
@@ -172,9 +162,7 @@ if __name__ == '__main__':
                 print("Choix de l'action à réaliser:")
                 flag = 0
                 print("\n1 - Ajouter un billet\n2 - Supprimer un Billet\n3 - Modifier un billet\n"
-                      "4 - Afficher les billets \n5 - Ajouter une catégorie de billet \n"
-                      "6 - Supprimer une catégorie de billet \n7 - Modifier un catégorie de billet\n"
-                      "8 - Afficher les catégories de billet\n9 - Retourner\n")
+                      "4 - Afficher les billets \n5 - Afficher les catégories de billet\n6 - Retourner\n")
                 choix = int(input("Choix ? "))
                 if choix == 1:
                     ticket.insertBillet(cur)
@@ -189,21 +177,12 @@ if __name__ == '__main__':
                     ticket.printBillet(cur)
                     conn.commit()
                 elif choix == 5:
-                    ticket.insertCatBillet(cur)
-                    conn.commit()
-                elif choix == 6:
-                    ticket.deleteCatBillet(cur)
-                    conn.commit()
-                elif choix == 7:
-                    ticket.editCatBillet(cur)
-                    conn.commit()
-                elif choix == 8:
                     ticket.printCatBillet(cur)
                     conn.commit()
-                elif choix == 9:
+                elif choix == 6:
                     flag == 1
                 else:
-                    print("Choix invalid, réessayez s'il vous plait.\n")
+                    print("Choix invalide, réessayez s'il vous plait.\n")
                     flag = 1
         elif cat == 7:  # Membre
             while flag == 1:
@@ -225,11 +204,10 @@ if __name__ == '__main__':
                 elif choix == 4:
                     flag == 1
                 else:
-                    print("Choix invalid, réessayez s'il vous plait.\n")
+                    print("Choix invalide, réessayez s'il vous plait.\n")
                     flag = 1
         elif cat == 8:  # Membre
             conn.close()
             print("Fin du Programme")
         else:
-            print("Choix invalid, réessayez s'il vous plait.\n")
-
+            print("Choix invalide, réessayez s'il vous plait.\n")

@@ -9,15 +9,15 @@ def insertCatBillet():
     catBilletJson = '['
     nom = input("Entrer le nom de la catégorie : ")
     nbPlace = input("Entrer le nombre de place disponibles : ")
-    catBilletJson += '{"nom" : "' + nom + '", "nbPlace": "' + nbPlace + '"}'
+    catBilletJson += '{"nom" : "' + nom + '", "nbPersonne": "' + nbPlace + '"}'
     while choix != 2:
         choix = int(input(
-            "Que voulez vous faire ? \n 1 - Entrez une nouvelle catégorie \n 2 - Retour à la création des séances"))
+            "Que voulez vous faire ? \n 1 - Entrez une nouvelle catégorie \n 2 - Retour à la création des séances\n"))
         if choix == 1:
             catBilletJson += ','
             nom = input("Entrer le nom de la catégorie : ")
             nbPlace = input("Entrer le nombre de place disponibles : ")
-            catBilletJson += '{"nom" : "' + nom + '", "nbPlace": "' + nbPlace + '"}'
+            catBilletJson += '{"nom" : "' + nom + '", "nbPersonne": "' + nbPlace + '"}'
     catBilletJson += ']'
     return catBilletJson
 
@@ -28,7 +28,7 @@ def printCatBillet(cur):
     print("nom du spectacle | nom | nombre de place")
     raw = cur.fetchone()
     while raw:
-        print(raw[0] + "|" + str(raw[1]))
+        print(raw[0] + "|" + str(raw[1]) + "|" + str(raw[2]))
         raw = cur.fetchone()
     end = input("Finis ?")
 

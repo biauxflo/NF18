@@ -1,6 +1,6 @@
 import association
 import person
-
+import seance
 
 def insertSpectacle(cur):
     nomSpectacle = input("Quel est le nom du spectacle ? ")
@@ -16,18 +16,22 @@ def insertSpectacle(cur):
         compositeur = input("Qui est le compositeur ? ")
         anneeParution = input("Quelle est l'année de parution ? FORMAT: YYYY-MM-DD ")
         genreConcert = input("Quel est le genre de musique jouée ? ")
-        sql = "INSERT INTO spectacle(nom, duree, typespectacle, compositeur,anneeparution,genreconcert, association) " \
-              "VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s')" \
-              % (nomSpectacle, dureeSpectacle, typeSpectacle, compositeur, anneeParution, genreConcert, nomAsso)
+        print("CREATION DE SEANCES : ")
+        seancesJson = seance.insertSeance(cur)
+        sql = "INSERT INTO spectacle(nom, duree, typespectacle, compositeur,anneeparution,genreconcert, association, seances) " \
+              "VALUES('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')" \
+              % (nomSpectacle, dureeSpectacle, typeSpectacle, compositeur, anneeParution, genreConcert, nomAsso, seancesJson)
         print(sql)
         cur.execute(sql)
     if typeSpectacle == 2:
         typeSpectacle = "piece de theatre"
         auteur = input("Qui est l'auteur de cette pièce ? ")
         dateParution = input("Quand est paru cette pièce ? FORMAT YYYY-MM-DD ")
-        typePiece = input("Quel est le genre de cette pièce ")
-        sql = "INSERT INTO spectacle(nom, duree, typespectacle, anneeparution, auteur, typetheatre,association) VALUES('%s', '%s', '%s', '%s', '%s', '%s', '%s')" \
-              % (nomSpectacle, dureeSpectacle, typeSpectacle, dateParution, auteur, typePiece, nomAsso)
+        typePiece = input("Quel est le genre de cette pièce: ")
+        print("CREATION DE SEANCES : ")
+        seancesJson = seance.insertSeance(cur)
+        sql = "INSERT INTO spectacle(nom, duree, typespectacle, anneeparution, auteur, typetheatre, association, seances) VALUES('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')" \
+              % (nomSpectacle, dureeSpectacle, typeSpectacle, dateParution, auteur, typePiece, nomAsso, seancesJson)
         print(sql)
         cur.execute(sql)
     if typeSpectacle == 3:
@@ -44,8 +48,10 @@ def insertSpectacle(cur):
             genreStandUp = "table ronde"
         if genreStandUp == 4:
             genreStandUp = "NULL"
-        sql = "INSERT INTO spectacle(nom, duree, typespectacle, genrestandup, association) VALUES ('%s', '%s', '%s', '%s', '%s')" \
-              % (nomSpectacle, dureeSpectacle, typeSpectacle, genreStandUp, nomAsso)
+        print("CREATION DE SEANCES : ")
+        seancesJson = seance.insertSeance(cur)
+        sql = "INSERT INTO spectacle(nom, duree, typespectacle, genrestandup, association, seances) VALUES ('%s', '%s', '%s', '%s', '%s', '%s')" \
+              % (nomSpectacle, dureeSpectacle, typeSpectacle, genreStandUp, nomAsso, seancesJson)
         print(sql)
         cur.execute(sql)
 

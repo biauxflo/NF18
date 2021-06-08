@@ -2,7 +2,7 @@ def insertAsso(cur, sql_salle=None):
     nom = input("Entrer le nom de l'association : ")
     description = input("Entrer la description de l'association : ")
     mail = input("Entrer l'adresse mail de l'association : ")
-    DateCrea = input("Entrer la date de céation de l'association : ")
+    DateCrea = input("Entrer la date de céation de l'association (FORMAT YYYY-MM-DD) : ")
     siteWeb = input("Entrer l'adresse du site Web de l'association : ")
     categorie = input("Entrez la catégorie de l'association : ")
     print("Voici les salles disponibles : \n\n")
