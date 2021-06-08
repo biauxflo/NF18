@@ -272,4 +272,7 @@ venv\Scripts\activate
 <h3>Tables étudiées</h3>
 <h4>Salle : </h4> (#numero : int, #bâtiment :string not NULL, type : {'salle de cours', 'bureau', 'amphithéâtre'}, nbPersonne : int not NULL)
 <h4>Association : </h4> (#nom : string, description : string, mail : string NOT NULL, dateCrea: Date not NULL, siteWeb: string, categorie: string, numeroSalle=>salle)
-<h4>Spectacle : </h4>
+<h4>Spectacle : </h4> (#nom : string, duree : int not NULL, compositeur : string , anneeParution : date, genreConcert : string , auteur : string , typeTheatre : string, genreStandUp : {'spectacle comique', 'débat', 'table ronde', NULL}, typeSpectacle : {'concert', 'stand-up', 'piece de theatre'}, association=>association)
+<h4>Séance : </h4> (#id : int, date : Date, nomSpectacle=>spectacle, numeroSalle=>salle)
+<h3>Etude des dépendance fonctionnelles de ces tables </h3>
+- (numéro, bâtiment) => type, nbPersonne
