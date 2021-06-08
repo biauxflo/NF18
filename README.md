@@ -1,4 +1,4 @@
-<h1> NF18 : Projet </h1>
+<h1> NF18 : Projet - V1 : SQL </h1>
 
 *BIAUX Florestan - DE LAUBIER Augustin - GORET Maxime - YE Shilang*
 
