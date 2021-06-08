@@ -278,10 +278,10 @@ venv\Scripts\activate
 
 <h3>Etude des dépendance fonctionnelles de ces tables </h3>
 
-- (numéro, bâtiment) => type, nbPersonne
-- séance.id -> nom.spectacle, salle.numéro, salle.bâtiment, séance.date
-- association.nom -> description, mail, dateCrea, siteWeb, catégorie, salle.numéro, salle.bâtiment
-- spectacle.nom -> duree, compositeur, anneeParution, genreConcert, auteur, typeTheatre, geerStandUp, typeSpectacle, association.nom
+- **Salle : **(numéro, bâtiment) => type, nbPersonne
+- **Séance : ** id => spectacle, numéro, bâtiment, date
+- **Association : **  nom => description, mail, dateCrea, siteWeb, catégorie, numéro, bâtiment
+- **Spectacle : ** nom => duree, compositeur, anneeParution, genreConcert, auteur, typeTheatre, genreStandUp, typeSpectacle, association
 
 <h3>Formes Normales </h3>
 
@@ -290,4 +290,8 @@ Les classes salles, association, spectacle et séance ne contiennent que des att
 Les classes associations, séances et spectacle sont forcément 2NF car 1NF et que la clé ne possède qu’un attribut. En ce qui concerne la classe salle, elle est également 2NF car ses deux attributs non-clés type et nbPersonne ne sont pas déterminés par une sous partie de la clé.
 
 Les classes associations, séance , spectacle et salle sont 3NF car 2NF et que leurs attributs n'appartenant à aucune clé candidate ne dépend directement que de clés candidates.
+
+<h3>Passage de données en NoSQL (JSon et PostgreSQL)</h3>
+
+Nous avons décidé de passer les séances ainsi que les catégories de billet en attribut JSon de la table spectacle. En effet, il semblerait logique que lors de l'ajout d'un spectacle donné, il faille déclarer la date ainsi que la localisation des différentes séances, ainsi que les différentes catégories de billet que l'on pourrait trouver.
 
