@@ -278,10 +278,10 @@ venv\Scripts\activate
 
 <h3>Etude des dépendance fonctionnelles de ces tables </h3>
 
-- **Salle : **(numéro, bâtiment) => type, nbPersonne
-- **Séance : ** id => spectacle, numéro, bâtiment, date
-- **Association : **  nom => description, mail, dateCrea, siteWeb, catégorie, numéro, bâtiment
-- **Spectacle : ** nom => duree, compositeur, anneeParution, genreConcert, auteur, typeTheatre, genreStandUp, typeSpectacle, association
+- **Salle :** (numéro, bâtiment) => type, nbPersonne
+- **Séance :** id => spectacle, numéro, bâtiment, date
+- **Association :**  nom => description, mail, dateCrea, siteWeb, catégorie, numéro, bâtiment
+- **Spectacle :** nom => duree, compositeur, anneeParution, genreConcert, auteur, typeTheatre, genreStandUp, typeSpectacle, association
 
 <h3>Formes Normales </h3>
 
