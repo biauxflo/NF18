@@ -294,6 +294,8 @@ Les classes associations, séance , spectacle et salle sont 3NF car 2NF et que l
 <h3>Passage de données en NoSQL (JSon et PostgreSQL)</h3>
 
 Nous avons décidé de passer les séances ainsi que les catégories de billet en attribut JSon de la table spectacle. En effet, il semblerait logique que lors de l'ajout d'un spectacle donné, il faille déclarer la date ainsi que la localisation des différentes séances, ainsi que les différentes catégories de billet que l'on pourrait trouver lors de cette séance.
-On a donc dans un tuple spectacle un tableau de json de séances contenant également en plus de ses attributs un tableau de json de catégorie de billets. 
+
+On a donc dans un tuple spectacle un tableau de json de séances contenant également en plus de ses attributs un tableau de json de catégories de billets. 
+
 Les modifications à notifier sont dans les fichiers insertData.sql, createdb.sql, seance.sql, seance.py et spectacle.py. Nous avons par ailleurs adapter les différents fichiers qui sont touchés par ces modifications.
 
