@@ -285,9 +285,9 @@ venv\Scripts\activate
 
 <h3>Formes Normales </h3>
 
-    Les classes salles, association, spectacle et séance ne contiennent que des attributs atomiques. Elles sont donc 1NF.
+Les classes salles, association, spectacle et séance ne contiennent que des attributs atomiques. Elles sont donc 1NF.
 
-    Les classes associations, séances et spectacle sont forcément 2NF car 1NF et que la clé ne possède qu’un attribut. En ce qui concerne la classe salle, elle est également 2NF car ses deux attributs non-clés type et nbPersonne ne sont pas déterminés par une sous partie de la clé.
+Les classes associations, séances et spectacle sont forcément 2NF car 1NF et que la clé ne possède qu’un attribut. En ce qui concerne la classe salle, elle est également 2NF car ses deux attributs non-clés type et nbPersonne ne sont pas déterminés par une sous partie de la clé.
 
-    Les classes associations, séance , spectacle et salle sont 3NF car 2NF et que leurs attributs n'appartenant à aucune clé candidate ne dépend directement que de clés candidates.
+Les classes associations, séance , spectacle et salle sont 3NF car 2NF et que leurs attributs n'appartenant à aucune clé candidate ne dépend directement que de clés candidates.
 
