@@ -14,12 +14,21 @@ INSERT INTO PersonneExterieure(personne,numeroTelephone,organismeAffiliation) VA
 
 INSERT INTO membre(role,nomAssociation,CIN) VALUES('president','DBS City', 987456);
 
-INSERT INTO Spectacle (nom, duree, typeSpectacle, compositeur, anneeParution, genreConcert,association) VALUES('Vol de spectacle','05:04:00', 'concert','bigN','2021-03-11','Techno', 'DBS City');
-
-INSERT INTO role(role, CIN, nomSpectacle) VALUES('Régisseur',987456,'Vol de spectacle');
-
-INSERT INTO Seance(date,nomSpectacle,numeroSalle,batimentSalle) VALUES('2021-10-05','Vol de spectacle',18,'BF');
-
-INSERT INTO CategorieBillet(nom,nbrPlace) VALUES('Plein pot', 150);
+INSERT INTO Spectacle (nom, duree, typeSpectacle, compositeur, anneeParution, genreConcert,association, seances) VALUES
+                      ('Vol de spectacle','05:04:00', 'concert','bigN','2021-03-11','Techno', 'DBS City',
+                       '[{"date":"2021-10-05",
+                         "numSalle": 18,
+                         "batimentSalle":"BF",
+                         "categorieBillets": [{
+                            "nom" : "Plein Pot",
+                            "nbPersonne" : "150"
+                         },
+                         {
+                            "nom" : "Peu cher",
+                            "nbPersonne" : "1"
+                         }]}]');
 
 INSERT INTO Billet(dateCreation, personne, tarif, categorie, seance) VALUES('2021-04-20', 1, 20, 'Plein pot', 1);
+/*INSERT INTO Seance(date,nomSpectacle,numeroSalle,batimentSalle) VALUES('2021-10-05','Vol de spectacle',18,'BF');
+
+INSERT INTO CategorieBillet(nom,nbrPlace) VALUES('Plein pot', 150);*/

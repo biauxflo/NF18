@@ -1,18 +1,28 @@
 import room
 import spectacle
-
+import ticket
 
 def insertSeance(cur):
+    seanceJson = '['
     date = input("Quelle est la date de la seance ? FORMAT : YYYY-MM-DD ")
     room.printRoom(cur)
     numeroSalle = input("Quelle numero de salle ? ")
     batimentSalle = input("Dans quel batiment ? ")
-    spectacle.printSpectacle(cur)
-    nomSpectacle = input("Quel est le nom du spectacle concerné ? ")
-    sql = "INSERT INTO seance(date, nomSpectacle, numerosalle, batimentsalle) VALUES('%s', '%s', %s, '%s')" \
-          % (date, nomSpectacle, numeroSalle, batimentSalle)
-    print(sql)
-    cur.execute(sql)
+    catBilletJson = ticket.insertCatBillet()
+    seanceJson += '{"date" :"' + date + '" , "numeroSalle" :"' + numeroSalle + '", "batimentSalle":"' + batimentSalle + '", "categorieBillets": "' + catBilletJson + '"}'
+    choix = 0
+    while choix != 2:
+        choix = int(input("Quel choix voulez-vous faire ?\n 1 - Insérer une nouvelle séance \n 2 - Retourner au menu\n"))
+        if choix == 1:
+            seanceJson += ','
+            date = input("Quelle est la date de la seance ? FORMAT : YYYY-MM-DD ")
+            room.printRoom(cur)
+            numeroSalle = input("Quelle numero de salle ? ")
+            batimentSalle = input("Dans quel batiment ? ")
+            catBilletJson = ticket.insertCatBillet()
+            seanceJson += '{"date" :"' + date + '" , "numeroSalle" :"' + numeroSalle + '", "batimentSalle":"' + batimentSalle + '", "categorieBillets": "' + catBilletJson + '"}'
+    seanceJson += ']'
+    return seanceJson
 
 
 def deleteSeance(cur):
@@ -48,4 +58,3 @@ def editSeance(cur):
           % (date, nomSpectacle, numeroSalle, batimentSalle, idSeance)
     print(sql)
     cur.execute(sql)
-

@@ -3,14 +3,23 @@ import person
 import seance
 import room
 
-def insertCatBillet(cur):
+
+def insertCatBillet():
+    choix = 0
+    catBilletJson = '['
     nom = input("Entrer le nom de la catégorie : ")
     nbPlace = input("Entrer le nombre de place disponibles : ")
-    sql = "INSERT INTO CategorieBillet(nom,nbrPlace) VALUES('%s',%s)" % (
-        nom, nbPlace)
-    print(sql)
-    cur.execute(sql)
-
+    catBilletJson += '{"nom" : "' + nom + '", "nbPlace": "' + nbPlace + '"}'
+    while choix != 2:
+        choix = int(input(
+            "Que voulez vous faire ? \n 1 - Entrez une nouvelle catégorie \n 2 - Retour à la création des séances"))
+        if choix == 1:
+            catBilletJson += ','
+            nom = input("Entrer le nom de la catégorie : ")
+            nbPlace = input("Entrer le nombre de place disponibles : ")
+            catBilletJson += '{"nom" : "' + nom + '", "nbPlace": "' + nbPlace + '"}'
+    catBilletJson += ']'
+    return catBilletJson
 
 
 def deleteCatBillet(cur):
@@ -113,7 +122,6 @@ def printBillet(cur):
         print("[" + str(raw[0]) + "] " + str(raw[1]) + " " + str(raw[2]) + " " + str(raw[3]) + " " + str(raw[4]))
         raw = cur.fetchone()
     end = input("Finis ?")
-
 
 
 def editBillet(cur):

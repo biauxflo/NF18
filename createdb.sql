@@ -74,6 +74,7 @@ CREATE TABLE spectacle (
     typeTheatre VARCHAR(25),
     genreStandUp genre_standup,
     association VARCHAR(25),
+    seances json,
     FOREIGN KEY (association) REFERENCES association(nom) ON DELETE CASCADE
 );
 
@@ -87,21 +88,6 @@ CREATE TABLE role(
     FOREIGN KEY (nomSpectacle) REFERENCES spectacle(nom) ON DELETE CASCADE
 );
 
-CREATE TABLE seance(
-    id SERIAL PRIMARY KEY,
-    date DATE NOT NULL,
-    nomSpectacle VARCHAR(25),
-    numeroSalle INTEGER,
-    batimentSalle VARCHAR(20),
-    FOREIGN KEY (nomSpectacle) REFERENCES spectacle(nom) ON DELETE CASCADE,
-    FOREIGN KEY (numeroSalle,batimentSalle) REFERENCES salle(numero, batiment) ON DELETE CASCADE
-);
-
-CREATE TABLE CategorieBillet(
-    nom VARCHAR(25),
-    nbrPlace INT NOT NULL,
-    PRIMARY KEY(nom)
-);
 
 CREATE TABLE Billet(
     dateCreation timestamp NOT NULL,
@@ -110,7 +96,21 @@ CREATE TABLE Billet(
     categorie VARCHAR(25),
     seance INT,
     PRIMARY KEY (seance, personne, categorie),
-    FOREIGN KEY (personne) REFERENCES Personne (id) ON DELETE CASCADE,
-    FOREIGN KEY (categorie) REFERENCES categorieBillet (nom) ON DELETE CASCADE ON UPDATE CASCADE,
-    FOREIGN KEY (seance) REFERENCES Seance(id) ON DELETE CASCADE
+    FOREIGN KEY (personne) REFERENCES Personne (id) ON DELETE CASCADE
 );
+/*CREATE TABLE seance(
+    id SERIAL PRIMARY KEY,
+    date DATE NOT NULL,
+    nomSpectacle VARCHAR(25),
+    numeroSalle INTEGER,
+    batimentSalle VARCHAR(20),
+    FOREIGN KEY (nomSpectacle) REFERENCES spectacle(nom) ON DELETE CASCADE,
+    FOREIGN KEY (numeroSalle,batimentSalle) REFERENCES salle(numero, batiment) ON DELETE CASCADE
+);*/
+
+/*CREATE TABLE CategorieBillet(
+    nom VARCHAR(25),
+    nbrPlace INT NOT NULL,
+    PRIMARY KEY(nom)
+);
+ */
