@@ -34,7 +34,7 @@ if __name__ == '__main__':
                 screenClear()
                 print("Choix de l'action à réaliser:")
                 flag = 0
-                print("\n1 - Ajouter une personne,\n2 - Supprimer une personne "
+                print("\n1 - Ajouter une personne\n2 - Supprimer une personne "
                       "inscrite\n3 - Afficher les personnes inscrites\n4 - Modifier les infos d'une personne\n"
                       "5 - Retourner\n")
                 choix = int(input("Choix ? "))
@@ -53,7 +53,7 @@ if __name__ == '__main__':
                 elif choix == 5:
                     flag == 1
                 else:
-                    print("Choix invalid, réessayez s'il vous plait.\n")
+                    print("Choix invalide, réessayez s'il vous plait.\n")
                     flag = 1
         elif cat == 2:#Association
             while flag == 1:
@@ -78,7 +78,7 @@ if __name__ == '__main__':
                 elif choix == 5:
                     flag == 1
                 else:
-                    print("Choix invalid, réessayez s'il vous plait.\n")
+                    print("Choix invalide, réessayez s'il vous plait.\n")
                     flag = 1
         elif cat == 3:  # Salle
             while flag == 1:
@@ -103,7 +103,7 @@ if __name__ == '__main__':
                 elif choix == 5:
                     flag == 1
                 else:
-                    print("Choix invalid, réessayez s'il vous plait.\n")
+                    print("Choix invalide, réessayez s'il vous plait.\n")
                     flag = 1
         elif cat == 4:  # Spectacle
             while flag == 1:
@@ -139,7 +139,7 @@ if __name__ == '__main__':
                 elif choix == 8:
                     flag == 1
                 else:
-                    print("Choix invalid, réessayez s'il vous plait.\n")
+                    print("Choix invalide, réessayez s'il vous plait.\n")
                     flag = 1
         elif cat == 5:  # Séance
             while flag == 1:
@@ -164,7 +164,7 @@ if __name__ == '__main__':
                 elif choix == 5:
                     flag == 1
                 else:
-                    print("Choix invalid, réessayez s'il vous plait.\n")
+                    print("Choix invalide, réessayez s'il vous plait.\n")
                     flag = 1
         elif cat == 6:  # Billet
             while flag == 1:
@@ -203,7 +203,7 @@ if __name__ == '__main__':
                 elif choix == 9:
                     flag == 1
                 else:
-                    print("Choix invalid, réessayez s'il vous plait.\n")
+                    print("Choix invalide, réessayez s'il vous plait.\n")
                     flag = 1
         elif cat == 7:  # Membre
             while flag == 1:
@@ -225,11 +225,11 @@ if __name__ == '__main__':
                 elif choix == 4:
                     flag == 1
                 else:
-                    print("Choix invalid, réessayez s'il vous plait.\n")
+                    print("Choix invalide, réessayez s'il vous plait.\n")
                     flag = 1
         elif cat == 8:  # Membre
             conn.close()
             print("Fin du Programme")
         else:
-            print("Choix invalid, réessayez s'il vous plait.\n")
+            print("Choix invalide, réessayez s'il vous plait.\n")
 

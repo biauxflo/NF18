@@ -1,7 +1,7 @@
 def insertRoom(cur):
     num = input("Entrer le numero de salle : ")
     batiment = input("Entrer le nom du batiment : ")
-    print("Quel est le type de la salle ?\n 1 - Amphithéâtre,\n2 - Salle de Cours,\n 3 - Bureau ")
+    print("Quel est le type de la salle ?\n 1 - Amphithéâtre\n2 - Salle de Cours\n 3 - Bureau ")
     type_bat = 0
     while type_bat < 1 or type_bat > 3:
         type_bat = int(input("Choix ?"))
@@ -44,7 +44,7 @@ def editRoom(cur):
     batiment = input("Nom du batiment à modifier : ")
     new_num = input("Entrer le numero de salle : ")
     new_batiment = input("Entrer le nom du batiment : ")
-    print("Quel est le type de la salle ?\n 1 - Amphithéâtre,\n2 - Salle de Cours,\n 3 - Bureau ")
+    print("Quel est le type de la salle ?\n 1 - Amphithéâtre\n2 - Salle de Cours\n 3 - Bureau ")
     new_type_bat = 0
     while new_type_bat < 1 or new_type_bat > 3:
         new_type_bat = int(input("Choix ?"))

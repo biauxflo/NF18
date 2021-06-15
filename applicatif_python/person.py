@@ -100,7 +100,7 @@ def printUniversitaire(cur):
 def editPerson(cur):
     printPerson(cur)
     typePers = 0
-    print("Dans l'université ou à l'extérieur ?\n 1 - Université, 2 - Extérieur")
+    print("Dans l'université ou à l'extérieur ?\n 1 - Université 2 - Extérieur")
     while typePers != 1 and typePers != 2:
         typePers = int(input("Choix : "))
     idToEdit = input("Quel est l'ID de la personne à modifier ?")
@@ -108,7 +108,7 @@ def editPerson(cur):
     newFirstName = input("Quel est le nouveau Prénom ?")
     if typePers == 1:
         newCIN = input("Entrez le CIN de la personne à modifier :")
-        print("Quel est le type de la personne ?\n 1 - Etudiant,\n2 - Personnel technique,\n 3 - Personnel enseignant \n "
+        print("Quel est le type de la personne ?\n 1 - Etudiant\n2 - Personnel technique\n 3 - Personnel enseignant \n "
               "4 - Personnel administratif")
         newTypeUni = 0
         while newTypeUni < 1 or newTypeUni > 4:
