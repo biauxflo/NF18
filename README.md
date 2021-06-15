@@ -297,5 +297,5 @@ Nous avons décidé de passer les séances ainsi que les catégories de billet e
 
 On a donc dans un tuple spectacle un tableau de json de séances contenant également en plus de ses attributs un tableau de json de catégories de billets. 
 
-Les modifications à notifier sont dans les fichiers insertData.sql, createdb.sql, seance.sql, seance.py et spectacle.py. Nous avons par ailleurs adapter les différents fichiers qui sont touchés par ces modifications.
+Les modifications à notifier sont dans les fichiers **insertData.sql**, **createdb.sql**, **seance.sql**, **seance.py** et **spectacle.py**. Nous avons par ailleurs adapter les différents fichiers qui sont touchés par ces modifications.
 
